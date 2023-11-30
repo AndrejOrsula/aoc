@@ -1,5 +1,5 @@
 [workspace]
-members = []
+members = ["aoc2023"]
 resolver = "2"
 
 [workspace.package]

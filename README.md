@@ -8,6 +8,7 @@
 My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 
 - [Edition](#edition)
+  - [Advent of Code 2023](#advent-of-code-2023)
 - [Instructions](#instructions)
   - [ Usage in Rust](#-usage-in-rust)
     - [ Get Answers and Run Performance Benchmarks](#-get-answers-and-run-performance-benchmarks)
@@ -20,6 +21,28 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 - [License](#license)
 
 ## Edition
+
+### [Advent of Code 2023](https://adventofcode.com/2023)
+
+<table>
+<tr><th>Answer</th><th>Generator Perf.</th><th>Runner Perf.</th></tr>
+<tr><td>
+
+|  Day  | Part 1 | Part 2 |
+| :---: | :----: | :----: |
+
+</td><td>
+
+| Part 1 | Part 2 |
+| :----: | :----: |
+
+</td><td>
+
+| Part 1 | Part 2 |
+| :----: | :----: |
+
+</td></tr>
+</table>
 
 ## Instructions
 

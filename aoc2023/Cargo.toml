@@ -1,0 +1,19 @@
+[package]
+name = "aoc2023"
+description = "Advent of Code 2023"
+edition = "2021"
+rust-version = "1.74"
+version = "0.1.0"
+authors.workspace = true
+keywords.workspace = true
+license.workspace = true
+readme.workspace = true
+repository.workspace = true
+
+[dependencies]
+aoc-runner = { workspace = true }
+aoc-runner-derive = { workspace = true }
+indoc = { workspace = true }
+
+[lib]
+bench = false
