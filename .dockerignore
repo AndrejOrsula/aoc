@@ -1,0 +1,39 @@
+## Docker
+Dockerfile
+.dockerignore
+.docker/host/
+.docker/*.bash
+
+## Docker Compose
+docker-compose.yml
+
+## Dev Container
+.devcontainer/
+
+## Git
+.git/
+.gitignore
+
+## GitHub
+.github/
+
+## Pre-commit
+.git_hooks/
+.pre-commit-config.yaml
+
+### Inherited from gitignore ###
+## Rust & Cargo
+target/
+**/Cargo.lock
+**/*.rs.bk
+**/*.pdb
+**/.cargo/config.toml
+!.cargo/config.toml
+
+## VS Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/*.code-snippets

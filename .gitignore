@@ -1,0 +1,15 @@
+## Rust & Cargo
+target/
+**/Cargo.lock
+**/*.rs.bk
+**/*.pdb
+**/.cargo/config.toml
+!.cargo/config.toml
+
+## VS Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/*.code-snippets

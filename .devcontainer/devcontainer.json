@@ -1,0 +1,28 @@
+{
+	"name": "${localWorkspaceFolderBasename}",
+	"build": {
+		"context": "${localWorkspaceFolder}",
+		"dockerfile": "${localWorkspaceFolder}/Dockerfile",
+		"cacheFrom": "andrejorsula/aoc"
+	},
+	"workspaceFolder": "/root/ws",
+	"workspaceMount": "type=bind,source=${localWorkspaceFolder},target=/root/ws",
+	"mounts": [
+		// Local time
+		"type=bind,source=/etc/localtime,target=/etc/localtime,readonly"
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				// Rust
+				"rust-lang.rust-analyzer",
+				"serayuzgur.crates",
+				"vadimcn.vscode-lldb",
+				// Toml
+				"tamasfe.even-better-toml",
+				// Utils
+				"christian-kohler.path-intellisense"
+			]
+		}
+	}
+}

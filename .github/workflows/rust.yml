@@ -1,0 +1,75 @@
+name: Rust
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+concurrency:
+  group: "${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}"
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  cargo:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        toolchain:
+          - "1.74" # Minimal supported Rust version (MSRV)
+          - stable
+          - beta
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Swatinem/rust-cache@v2
+        with:
+          save-if: ${{ github.event_name == 'push'}}
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ matrix.toolchain }}
+          components: rustfmt, clippy
+
+      ## cargo fmt
+      - name: cargo fmt
+        run: cargo fmt --all --check --verbose
+
+      ## cargo check
+      - name: cargo check
+        run: cargo check --workspace --all-targets --verbose
+      - name: cargo check --no-default-features
+        run: cargo check --workspace --all-targets --no-default-features --verbose
+      - name: cargo check --all-features
+        run: cargo check --workspace --all-targets --all-features --verbose
+
+      ## cargo clippy
+      - name: cargo clippy
+        run: cargo clippy --workspace --all-targets --all-features --no-deps --verbose -- --deny warnings
+
+      ## cargo test
+      - name: cargo test (default features)
+        run: cargo test --workspace --all-targets --verbose
+      - name: cargo test --no-default-features
+        run: cargo test --workspace --all-targets --no-default-features --verbose
+      - name: cargo test --all-features
+        run: cargo test --workspace --all-targets --all-features --verbose
+
+      ## cargo test --doc
+      - name: cargo test --doc (default features)
+        run: cargo test --workspace --doc --verbose
+      - name: cargo test --doc --no-default-features
+        run: cargo test --workspace --doc --no-default-features --verbose
+      - name: cargo test --doc --all-features
+        run: cargo test --workspace --doc --all-features --verbose
+
+      ## cargo doc
+      - name: cargo doc
+        run: cargo doc --workspace --all-features --no-deps --verbose
+      - name: doc --document-private-items
+        run: cargo doc --workspace --all-features --no-deps --document-private-items --verbose

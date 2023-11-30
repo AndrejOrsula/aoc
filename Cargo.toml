@@ -1,0 +1,15 @@
+[workspace]
+members = []
+resolver = "2"
+
+[workspace.package]
+authors = ["Andrej Orsula <orsula.andrej@gmail.com>"]
+keywords = ["advent of code", "aoc"]
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/AndrejOrsula/aoc"
+
+[workspace.dependencies]
+aoc-runner = { version = "0.3" }
+aoc-runner-derive = { version = "0.3" }
+indoc = { version = "2" }
