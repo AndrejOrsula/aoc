@@ -28,18 +28,21 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 <tr><th>Answer</th><th>Generator Perf.</th><th>Runner Perf.</th></tr>
 <tr><td>
 
-|  Day  | Part 1 | Part 2 |
-| :---: | :----: | :----: |
+|                          Day                          | Part 1 | Part 2 |
+| :---------------------------------------------------: | :----: | :----: |
+| [1: Trebuchet?!](https://adventofcode.com/2023/day/1) | 56108  | 55652  |
 
 </td><td>
 
 | Part 1 | Part 2 |
 | :----: | :----: |
+| 4.21µs | 404ns  |
 
 </td><td>
 
 | Part 1 | Part 2 |
 | :----: | :----: |
+| 49.9µs | 887µs  |
 
 </td></tr>
 </table>
