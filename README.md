@@ -30,21 +30,24 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 <tr><th>Solution</th><th>Part 1 Performance</th><th>Part 2 Performance</th></tr>
 <tr><td>
 
-|                          Day                          |               Code               |                   Input                   |
-| :---------------------------------------------------: | :------------------------------: | :---------------------------------------: |
-| [1: Trebuchet?!](https://adventofcode.com/2023/day/1) | [`day1.rs`](aoc2023/src/day1.rs) | [`day1.txt`](aoc2023/input/2023/day1.txt) |
+|                           Day                            |               Code               |                   Input                   |
+| :------------------------------------------------------: | :------------------------------: | :---------------------------------------: |
+|  [1: Trebuchet?!](https://adventofcode.com/2023/day/1)   | [`day1.rs`](aoc2023/src/day1.rs) | [`day1.txt`](aoc2023/input/2023/day1.txt) |
+| [1: Cube Conundrum](https://adventofcode.com/2023/day/2) | [`day2.rs`](aoc2023/src/day2.rs) | [`day2.txt`](aoc2023/input/2023/day2.txt) |
 
 </td><td>
 
 | Generator | Runner  |
 | :-------: | :-----: |
 |  4.21 µs  | 47.4 µs |
+|  508 µs   | 1.12 µs |
 
 </td><td>
 
-| Generator | Runner |
-| :-------: | :----: |
-|  422 ns   | 753 µs |
+| Generator | Runner  |
+| :-------: | :-----: |
+|  0.42 µs  | 753 µs  |
+|  323 µs   | 1.14 µs |
 
 </td></tr>
 </table>
