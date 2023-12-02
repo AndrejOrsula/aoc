@@ -1,4 +1,5 @@
 use aoc_runner_derive::{aoc, aoc_generator};
+use std::str::FromStr;
 
 #[aoc_generator(day2)]
 fn parse(input: &str) -> Vec<utils::Game> {
@@ -32,7 +33,7 @@ fn parse(input: &str) -> Vec<utils::Game> {
                     cubes.trim().split(',').for_each(|cube| {
                         let mut cube = cube.trim().split(' ');
                         let n = cube.next().unwrap().parse().unwrap();
-                        let color = utils::Color::from(cube.next().unwrap());
+                        let color = utils::Color::from_str(cube.next().unwrap()).unwrap();
                         cube_set.set_n_color(color, n);
                     });
                     cube_set
@@ -76,13 +77,14 @@ mod utils {
         Blue,
     }
 
-    impl From<&str> for Color {
-        fn from(s: &str) -> Self {
+    impl std::str::FromStr for Color {
+        type Err = &'static str;
+        fn from_str(s: &str) -> Result<Self, Self::Err> {
             match s {
-                "red" => Self::Red,
-                "green" => Self::Green,
-                "blue" => Self::Blue,
-                _ => panic!("Invalid color: {}", s),
+                "red" => Ok(Self::Red),
+                "green" => Ok(Self::Green),
+                "blue" => Ok(Self::Blue),
+                _ => Err("Invalid color"),
             }
         }
     }
@@ -98,20 +100,11 @@ fn part1(input: &[utils::Game]) -> u32 {
         .iter()
         .filter_map(|game| {
             // Determine if game is valid
-            let is_game_valid = game
-                .cube_sets
-                .iter()
-                .find_map(|cube_set| {
-                    if cube_set.n_red > MAX_N_RED
-                        || cube_set.n_green > MAX_N_GREEN
-                        || cube_set.n_blue > MAX_N_BLUE
-                    {
-                        Some(false)
-                    } else {
-                        None
-                    }
-                })
-                .unwrap_or(true);
+            let is_game_valid = game.cube_sets.iter().all(|cube_set| {
+                cube_set.n_red <= MAX_N_RED
+                    && cube_set.n_green <= MAX_N_GREEN
+                    && cube_set.n_blue <= MAX_N_BLUE
+            });
 
             // Return the ID of the game if valid to be summed
             if is_game_valid {
