@@ -12,9 +12,9 @@ fn part1(input: &str) -> u32 {
         .map(|line| {
             let mut digits = line.chars().filter_map(|c| c.to_digit(10));
             let first_digit = digits.next().unwrap();
-            let last_digit = digits.last().unwrap_or(first_digit);
+            let last_digit = digits.next_back().unwrap_or(first_digit);
 
-            first_digit * 10 + last_digit
+            10 * first_digit + last_digit
         })
         .sum()
 }
@@ -26,20 +26,18 @@ fn part2(input: &str) -> u32 {
     input
         .lines()
         .map(|line| {
-            let digits = Digit::find_all_firsts_and_lasts(line);
-            let first_digit: u32 = digits.get(digits.keys().min().unwrap()).unwrap().into();
-            let last_digit: u32 = digits.get(digits.keys().max().unwrap()).unwrap().into();
-            first_digit * 10 + last_digit
+            let (first_digit, last_digit) = Digit::find_first_and_last(line);
+
+            10 * (first_digit as u32) + (last_digit as u32)
         })
         .sum()
 }
 
 mod part2_utils {
-    use std::collections::HashMap;
-    use strum::IntoEnumIterator;
+    use strum::{EnumIter, IntoEnumIterator};
 
     #[repr(u32)]
-    #[derive(Debug, Clone, Copy, strum::EnumIter)]
+    #[derive(Debug, Clone, Copy, EnumIter)]
     /// Represents a digit from 1 to 9.
     pub enum Digit {
         One = 1,
@@ -54,52 +52,53 @@ mod part2_utils {
     }
 
     impl Digit {
-        /// Finds the first and last instances of all `Digit`s in a string.
+        /// Finds the first and last instances of `Digit` in a string.
         /// Digit can be either spelled out or in numeric form.
         ///
         /// # Returns
-        /// HashMap in the form of <index_of_the_first_letter: usize, digit: Digit>.
-        pub fn find_all_firsts_and_lasts(input: &str) -> HashMap<usize, Self> {
-            let mut result = HashMap::new();
+        /// (Digit, Digit) in the form of (first_digit, last_digit).
+        pub fn find_first_and_last(input: &str) -> (Digit, Digit) {
+            let mut first_index = usize::MAX;
+            let mut last_index = usize::MIN;
+
+            let mut first_digit = Digit::One;
+            let mut last_digit = Digit::One;
 
             for digit in Self::iter() {
                 let digit_spelling = digit.as_spelling();
                 let digit_char = digit.as_char();
 
                 // Get index to the first instance of the digit
-                let first_index = {
-                    let first_index_spelling = input.find(digit_spelling);
-                    let first_index_char = input.find(digit_char);
-
-                    match (first_index_spelling, first_index_char) {
-                        (Some(spelling), Some(char)) => spelling.min(char),
-                        (Some(spelling), None) => spelling,
-                        (None, Some(char)) => char,
+                let digit_first_index = {
+                    match (input.find(digit_spelling), input.find(digit_char)) {
+                        (Some(s), Some(c)) => s.min(c),
+                        (Some(s), None) => s,
+                        (None, Some(c)) => c,
                         (None, None) => continue,
                     }
                 };
-                // Insert the digit into the result
-                result.insert(first_index, digit);
-
                 // Get index to the last instance of the digit
-                let last_index = {
-                    let last_index_spelling = input.rfind(digit_spelling);
-                    let last_index_char = input.rfind(digit_char);
-
-                    match (last_index_spelling, last_index_char) {
-                        (Some(spelling), Some(char)) => spelling.max(char),
-                        (Some(spelling), None) => spelling,
-                        (None, Some(char)) => char,
+                let digit_last_index = {
+                    match (input.rfind(digit_spelling), input.rfind(digit_char)) {
+                        (Some(s), Some(c)) => s.max(c),
+                        (Some(s), None) => s,
+                        (None, Some(c)) => c,
                         _ => unreachable!(),
                     }
                 };
-                // Insert the digit into the result if the last index is different from the first
-                if last_index != first_index {
-                    result.insert(last_index, digit);
+
+                // Update the first and last indices
+                if digit_first_index <= first_index {
+                    first_index = digit_first_index;
+                    first_digit = digit;
+                }
+                if digit_last_index >= last_index {
+                    last_index = digit_last_index;
+                    last_digit = digit;
                 }
             }
 
-            result
+            (first_digit, last_digit)
         }
 
         /// Returns the spelling of the digit.

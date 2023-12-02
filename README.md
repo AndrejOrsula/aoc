@@ -24,25 +24,27 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 
 ### [Advent of Code 2023](https://adventofcode.com/2023)
 
+> All benchmarks are run on a *Dell Precision 5550* laptop with an *Intel Core i7-10875H* CPU.
+
 <table>
-<tr><th>Answer</th><th>Generator Perf.</th><th>Runner Perf.</th></tr>
+<tr><th>Solution</th><th>Part 1 Performance</th><th>Part 2 Performance</th></tr>
 <tr><td>
 
-|                          Day                          | Part 1 | Part 2 |
-| :---------------------------------------------------: | :----: | :----: |
-| [1: Trebuchet?!](https://adventofcode.com/2023/day/1) | 56108  | 55652  |
+|                          Day                          |               Code               |                   Input                   |
+| :---------------------------------------------------: | :------------------------------: | :---------------------------------------: |
+| [1: Trebuchet?!](https://adventofcode.com/2023/day/1) | [`day1.rs`](aoc2023/src/day1.rs) | [`day1.txt`](aoc2023/input/2023/day1.txt) |
 
 </td><td>
 
-| Part 1 | Part 2 |
-| :----: | :----: |
-| 4.21µs | 404ns  |
+| Generator | Runner  |
+| :-------: | :-----: |
+|  4.21 µs  | 47.4 µs |
 
 </td><td>
 
-| Part 1 | Part 2 |
-| :----: | :----: |
-| 49.9µs | 887µs  |
+| Generator | Runner |
+| :-------: | :----: |
+|  422 ns   | 753 µs |
 
 </td></tr>
 </table>
