@@ -16,6 +16,7 @@ aoc-runner-derive = { workspace = true }
 indoc = { workspace = true }
 
 regex = { version = "1.10" }
+smallvec = { version = "1.11" }
 strum = { version = "0.25", features = ["derive"] }
 
 [lib]

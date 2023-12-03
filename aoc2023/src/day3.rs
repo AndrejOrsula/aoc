@@ -7,83 +7,71 @@ fn parse(input: &str) -> String {
 
 #[aoc(day3, part1)]
 fn part1(input: &str) -> u32 {
-    use part1_utils::is_special_symbol;
-
     // Sum of all numbers that are surrounded by symbols
     let mut sum = 0;
 
     // Iterate over the lines in the input
-    for (current_line_index, current_line_content) in input.lines().enumerate() {
-        // Determine the index of the lines before and after the number
-        let line_above_index = current_line_index.checked_sub(1);
-        let line_below_index = current_line_index + 1;
+    for (current_line_index, current_line) in input.lines().enumerate() {
+        let line_max_index = current_line.len().saturating_sub(1);
+
+        // Try getting the lines above and below the current line
+        let line_above = current_line_index
+            .checked_sub(1)
+            .and_then(|line_above_index| input.lines().nth(line_above_index));
+        let line_below = input.lines().nth(current_line_index.saturating_add(1));
 
         // Iterate over the characters in the line and find the numbers
-        let mut number_start = None;
-        let mut char_indices_peekable = current_line_content.char_indices().peekable();
-        while let Some((mut index, c)) = char_indices_peekable.next() {
+        let mut num_start = None;
+        for (index, c) in current_line.char_indices() {
             // Mark the start a new number and continue until its end or the end of the line is reached
-            if c.is_ascii_digit() {
-                if number_start.is_none() {
-                    number_start = Some(index);
+            let index_after_num = if c.is_ascii_digit() {
+                if num_start.is_none() {
+                    num_start = Some(index);
                 }
-                if char_indices_peekable.peek().is_some() {
-                    continue;
+                if index == line_max_index {
+                    index.saturating_add(1)
                 } else {
-                    index += 1;
+                    continue;
                 }
-            }
+            } else {
+                index
+            };
 
             // The full number is found once a non-digit character is encountered after start of the number was marked
-            if let Some(number_index_start) = number_start {
-                // Determine the index of the character before and after the number
-                let char_index_before = number_index_start.checked_sub(1);
-                let char_index_after = index;
+            if let Some(number_index_start) = num_start {
+                // Determine the index of the character before the number (for diagonal checks)
+                let index_before_num = number_index_start.checked_sub(1);
 
                 // Check if the number should be added to the sum
                 #[allow(unused_parens)]
                 if (
                     // Character to the left of the number
-                    char_index_before.is_some_and(|char_index_before| {
-                        current_line_content
-                                .chars()
-                                .nth(char_index_before).is_some_and(is_special_symbol)
+                    index_before_num.is_some_and(|index_before_num| {
+                        part1_utils::is_special_symbol(current_line.chars().nth(index_before_num).unwrap())
                     })
                     // Character to the right of the number
-                    || current_line_content
+                    || current_line
                                 .chars()
-                                .nth(char_index_after).is_some_and(is_special_symbol)
+                                .nth(index_after_num).is_some_and(part1_utils::is_special_symbol)
                     // Characters above the number
-                    || line_above_index.is_some_and(|line_above_index| {
-                        input
-                            .lines()
-                            .nth(line_above_index)
-                            .map_or(false, |line| {
-                                line.chars().skip(char_index_before.unwrap_or(0))
-                                    .take((char_index_after - char_index_before.unwrap_or(0))
-                                    .saturating_add(1))
-                                    .any(is_special_symbol)
-                            })
+                    || line_above.is_some_and(|line_above| {
+                        line_above[index_before_num.unwrap_or(0)..index_after_num.saturating_add(1).min(line_max_index)].chars()
+                            .any(part1_utils::is_special_symbol)
                     })
                     // Characters below the number
-                    || input
-                        .lines()
-                        .nth(line_below_index)
-                        .map_or(false, |line| {
-                            line.chars()
-                                .skip(char_index_before.unwrap_or(0))
-                                .take((char_index_after - char_index_before.unwrap_or(0)).saturating_add(1))
-                                .any(is_special_symbol)
-                        })
+                    || line_below.is_some_and(|line_below| {
+                        line_below[index_before_num.unwrap_or(0)..index_after_num.saturating_add(1).min(line_max_index)].chars()
+                            .any(part1_utils::is_special_symbol)
+                    })
                 ) {
                     // Add the number to the sum
-                    sum += current_line_content[number_index_start..char_index_after]
+                    sum += current_line[number_index_start..index_after_num]
                         .parse::<u32>()
                         .unwrap();
                 }
 
                 // Reset the start of the number
-                number_start = None;
+                num_start = None;
             }
         }
     }
@@ -103,122 +91,104 @@ fn part2(input: &str) -> u32 {
     let mut sum = 0;
 
     // Find all numbers adjacent to the gear
-    let mut adjacent_numbers = Vec::with_capacity(2);
+    let mut adjacent_numbers = smallvec::SmallVec::<[u32; 2]>::new();
 
     // Iterate over the lines in the input
-    for (current_line_index, current_line_content) in input.lines().enumerate() {
-        // Determine the index of the lines before and after the gear
-        let line_above_index = current_line_index.checked_sub(1);
-        let line_below_index = current_line_index + 1;
+    for (current_line_index, current_line) in input.lines().enumerate() {
+        // Skip lines that do not contain any gears
+        if !current_line.contains(part2_utils::is_gear) {
+            continue;
+        }
+
+        // Try getting the lines above and below the current line
+        let line_above = current_line_index
+            .checked_sub(1)
+            .and_then(|line_above_index| input.lines().nth(line_above_index));
+        let line_below = input.lines().nth(current_line_index.saturating_add(1));
 
         // Iterate over the characters in the line and find the gears
-        let char_indices_peekable = current_line_content.char_indices().peekable();
-        for (index, c) in char_indices_peekable {
+        for (index, c) in current_line.char_indices() {
             // Skip non-gear characters
             if !part2_utils::is_gear(c) {
                 continue;
             }
 
             // Search for numbers to the left of the gear
-            if let Some(number) = current_line_content[..index]
+            if let Some(number) = current_line[..index]
                 .char_indices()
                 .rev()
                 .take_while(|(_, c)| c.is_ascii_digit())
                 .last()
                 .and_then(|(index, _)| {
-                    current_line_content[index..]
+                    current_line[index..]
                         .chars()
-                        .take_while(|c| c.is_ascii_digit())
+                        .take_while(char::is_ascii_digit)
                         .collect::<String>()
                         .parse::<u32>()
                         .ok()
                 })
             {
-                adjacent_numbers.push(number)
+                adjacent_numbers.push(number);
             }
 
             // Search for numbers to the right of the gear
-            if let Ok(number) = current_line_content[(index + 1)..]
+            if let Ok(number) = current_line[(index + 1)..]
                 .chars()
-                .take_while(|c| c.is_ascii_digit())
+                .take_while(char::is_ascii_digit)
                 .collect::<String>()
                 .parse::<u32>()
             {
-                adjacent_numbers.push(number)
+                adjacent_numbers.push(number);
             }
 
             // Search for numbers above the gear
-            if let Some(line_above_index) = line_above_index {
+            if let Some(line_above) = line_above {
                 // Find the left-most digit above the gear
-                let numbers_start_index = input
-                    .lines()
-                    .nth(line_above_index)
-                    .and_then(|line| {
-                        line[..=index.saturating_sub(1)]
-                            .char_indices()
-                            .rev()
-                            .take_while(|(_, c)| c.is_ascii_digit())
-                            .last()
-                            .map(|(i, _)| i)
-                    })
-                    .unwrap_or(index.saturating_sub(1));
+                let numbers_start_index = line_above[..=index.saturating_sub(1)]
+                    .char_indices()
+                    .rev()
+                    .take_while(|(_, c)| c.is_ascii_digit())
+                    .last()
+                    .map_or(index.saturating_sub(1), |(i, _)| i);
                 // Find the right-most digit above the gear
-                let numbers_end_index = input
-                    .lines()
-                    .nth(line_above_index)
-                    .and_then(|line| {
-                        line[index.saturating_add(1)..]
-                            .char_indices()
-                            .take_while(|(_, c)| c.is_ascii_digit())
-                            .last()
-                            .map(|(i, _)| index.saturating_add(2) + i)
-                    })
-                    .unwrap_or(index.saturating_add(1));
+                let numbers_end_index = line_above[index.saturating_add(1)..]
+                    .char_indices()
+                    .take_while(|(_, c)| c.is_ascii_digit())
+                    .last()
+                    .map_or(index.saturating_add(1), |(i, _)| {
+                        index.saturating_add(2) + i
+                    });
 
                 // Parse all numbers above the gear
-                if let Some(line) = input.lines().nth(line_above_index) {
-                    line[numbers_start_index..numbers_end_index]
-                        .split(|c: char| !c.is_ascii_digit())
-                        .filter_map(|number| number.parse::<u32>().ok())
-                        .for_each(|number| adjacent_numbers.push(number))
-                }
+                line_above[numbers_start_index..numbers_end_index]
+                    .split(|c: char| !c.is_ascii_digit())
+                    .filter_map(|number| number.parse::<u32>().ok())
+                    .for_each(|number| adjacent_numbers.push(number));
             };
 
             // Search for numbers below the gear
-            {
+            if let Some(line_below) = line_below {
                 // Find the left-most digit below the gear
-                let numbers_start_index = input
-                    .lines()
-                    .nth(line_below_index)
-                    .and_then(|line| {
-                        line[..=index.saturating_sub(1)]
-                            .char_indices()
-                            .rev()
-                            .take_while(|(_, c)| c.is_ascii_digit())
-                            .last()
-                            .map(|(i, _)| i)
-                    })
-                    .unwrap_or(index.saturating_sub(1));
+                let numbers_start_index = line_below[..=index.saturating_sub(1)]
+                    .char_indices()
+                    .rev()
+                    .take_while(|(_, c)| c.is_ascii_digit())
+                    .last()
+                    .map_or(index.saturating_sub(1), |(i, _)| i);
                 // Find the right-most digit below the gear
-                let numbers_end_index = input
-                    .lines()
-                    .nth(line_below_index)
-                    .and_then(|line| {
-                        line[index.saturating_add(1)..]
-                            .char_indices()
-                            .take_while(|(_, c)| c.is_ascii_digit())
-                            .last()
-                            .map(|(i, _)| index.saturating_add(2) + i)
-                    })
-                    .unwrap_or(index.saturating_add(1));
+                let numbers_end_index = line_below[index.saturating_add(1)..]
+                    .char_indices()
+                    .take_while(|(_, c)| c.is_ascii_digit())
+                    .last()
+                    .map_or(index.saturating_add(1), |(i, _)| {
+                        index.saturating_add(2) + i
+                    });
 
                 // Parse all numbers below the gear
-                if let Some(line) = input.lines().nth(line_below_index) {
-                    line[numbers_start_index..numbers_end_index]
-                        .split(|c: char| !c.is_ascii_digit())
-                        .filter_map(|number| number.parse::<u32>().ok())
-                        .for_each(|number| adjacent_numbers.push(number))
-                }
+                line_below[numbers_start_index..numbers_end_index]
+                    .split(|c: char| !c.is_ascii_digit())
+                    .filter_map(|number| number.parse::<u32>().ok())
+                    .for_each(|number| adjacent_numbers.push(number));
             }
 
             // Add the product of the adjacent numbers to the sum if there are exactly two adjacent numbers

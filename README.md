@@ -7,19 +7,6 @@
 
 My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 
-- [Edition](#edition)
-  - [Advent of Code 2023](#advent-of-code-2023)
-- [Instructions](#instructions)
-  - [ Usage in Rust](#-usage-in-rust)
-    - [ Get Answers and Run Performance Benchmarks](#-get-answers-and-run-performance-benchmarks)
-    - [ Test the Correctness of Solutions](#-test-the-correctness-of-solutions)
-  - [ Docker](#-docker)
-    - [Build Image](#build-image)
-    - [Run Container](#run-container)
-    - [Run Dev Container](#run-dev-container)
-    - [Join Container](#join-container)
-- [License](#license)
-
 ## Edition
 
 ### [Advent of Code 2023](https://adventofcode.com/2023)
@@ -42,7 +29,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | :-------: | :------: |
 | 3.933 µs  | 45.46 µs |
 | 493.8 µs  | 1.063 µs |
-| 1.265 µs  | 1.431 ms |
+| 1.146 µs  | 429.6 µs |
 
 </td><td>
 
@@ -50,7 +37,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | :-------: | :------: |
 | 0.422 µs  | 776.7 µs |
 | 298.0 µs  | 1.108 µs |
-| 0.450 µs  | 1.812 ms |
+| 0.419 µs  | 308.1 µs |
 
 </td></tr>
 </table>
