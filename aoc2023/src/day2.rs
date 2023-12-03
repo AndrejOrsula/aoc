@@ -34,7 +34,7 @@ fn parse(input: &str) -> Vec<utils::Game> {
                         let mut cube = cube.trim().split(' ');
                         let n = cube.next().unwrap().parse().unwrap();
                         let color = utils::Color::from_str(cube.next().unwrap()).unwrap();
-                        cube_set.set_n_color(color, n);
+                        cube_set.set_n_color(&color, n);
                     });
                     cube_set
                 })
@@ -61,7 +61,7 @@ mod utils {
     }
 
     impl CubeSet {
-        pub fn set_n_color(&mut self, color: Color, n: u8) {
+        pub fn set_n_color(&mut self, color: &Color, n: u8) {
             match color {
                 Color::Red => self.n_red = n,
                 Color::Green => self.n_green = n,
@@ -132,7 +132,7 @@ fn part2(input: &[utils::Game]) -> u32 {
             });
 
             // Return the product of the minimum number of cubes of each color
-            (min_n_red as u32) * (min_n_green as u32) * (min_n_blue as u32)
+            u32::from(min_n_red) * u32::from(min_n_green) * u32::from(min_n_blue)
         })
         .sum()
 }
