@@ -21,7 +21,7 @@ fn part1(input: &str) -> u32 {
 
 #[aoc(day1, part2)]
 fn part2(input: &str) -> u32 {
-    use part2_utils::*;
+    use part2_utils::Digit;
 
     input
         .lines()
@@ -56,13 +56,13 @@ mod part2_utils {
         /// Digit can be either spelled out or in numeric form.
         ///
         /// # Returns
-        /// (Digit, Digit) in the form of (first_digit, last_digit).
-        pub fn find_first_and_last(input: &str) -> (Digit, Digit) {
+        /// (Digit, Digit) in the form of (first digit, last digit).
+        pub fn find_first_and_last(input: &str) -> (Self, Self) {
             let mut first_index = usize::MAX;
             let mut last_index = usize::MIN;
 
-            let mut first_digit = Digit::One;
-            let mut last_digit = Digit::One;
+            let mut first_digit = Self::One;
+            let mut last_digit = Self::One;
 
             for digit in Self::iter() {
                 let digit_spelling = digit.as_spelling();
@@ -102,32 +102,32 @@ mod part2_utils {
         }
 
         /// Returns the spelling of the digit.
-        fn as_spelling(&self) -> &'static str {
+        fn as_spelling(self) -> &'static str {
             match self {
-                Digit::One => "one",
-                Digit::Two => "two",
-                Digit::Three => "three",
-                Digit::Four => "four",
-                Digit::Five => "five",
-                Digit::Six => "six",
-                Digit::Seven => "seven",
-                Digit::Eight => "eight",
-                Digit::Nine => "nine",
+                Self::One => "one",
+                Self::Two => "two",
+                Self::Three => "three",
+                Self::Four => "four",
+                Self::Five => "five",
+                Self::Six => "six",
+                Self::Seven => "seven",
+                Self::Eight => "eight",
+                Self::Nine => "nine",
             }
         }
 
         /// Returns the digit as a char.
-        fn as_char(&self) -> char {
+        fn as_char(self) -> char {
             match self {
-                Digit::One => '1',
-                Digit::Two => '2',
-                Digit::Three => '3',
-                Digit::Four => '4',
-                Digit::Five => '5',
-                Digit::Six => '6',
-                Digit::Seven => '7',
-                Digit::Eight => '8',
-                Digit::Nine => '9',
+                Self::One => '1',
+                Self::Two => '2',
+                Self::Three => '3',
+                Self::Four => '4',
+                Self::Five => '5',
+                Self::Six => '6',
+                Self::Seven => '7',
+                Self::Eight => '8',
+                Self::Nine => '9',
             }
         }
     }
