@@ -27,27 +27,30 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 > All benchmarks are run on a *Dell Precision 5550* laptop with an *Intel Core i7-10875H* CPU.
 
 <table>
-<tr><th>Days</th><th>Part 1 Performance</th><th>Part 2 Performance</th></tr>
+<tr><th>Day</th><th>Part 1 Performance</th><th>Part 2 Performance</th></tr>
 <tr><td>
 
-|                        Puzzle                         |               Code               |                   Input                   |
-| :---------------------------------------------------: | :------------------------------: | :---------------------------------------: |
-|  [Trebuchet?!](https://adventofcode.com/2023/day/1)   | [`day1.rs`](aoc2023/src/day1.rs) | [`day1.txt`](aoc2023/input/2023/day1.txt) |
-| [Cube Conundrum](https://adventofcode.com/2023/day/2) | [`day2.rs`](aoc2023/src/day2.rs) | [`day2.txt`](aoc2023/input/2023/day2.txt) |
+|   D   | Puzzle                                                |               Code               |
+| :---: | ----------------------------------------------------- | :------------------------------: |
+|   1   | [Trebuchet?!](https://adventofcode.com/2023/day/1)    | [`day1.rs`](aoc2023/src/day1.rs) |
+|   2   | [Cube Conundrum](https://adventofcode.com/2023/day/2) | [`day2.rs`](aoc2023/src/day2.rs) |
+|   3   | [Gear Ratios](https://adventofcode.com/2023/day/3)    | [`day3.rs`](aoc2023/src/day3.rs) |
 
 </td><td>
 
 | Generator |  Runner  |
 | :-------: | :------: |
-| 5.450 µs  | 49.58 µs |
-| 476.4 µs  | 1.031 µs |
+| 3.933 µs  | 45.46 µs |
+| 493.8 µs  | 1.063 µs |
+| 1.265 µs  | 1.431 ms |
 
 </td><td>
 
 | Generator |  Runner  |
 | :-------: | :------: |
-| 0.471 µs  | 795.3 µs |
-| 297.5 µs  | 1.076 µs |
+| 0.422 µs  | 776.7 µs |
+| 298.0 µs  | 1.108 µs |
+| 0.450 µs  | 1.812 ms |
 
 </td></tr>
 </table>
