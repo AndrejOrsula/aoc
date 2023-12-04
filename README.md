@@ -22,6 +22,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 |   1   | [Trebuchet?!](https://adventofcode.com/2023/day/1)    | [`day1.rs`](aoc2023/src/day1.rs) |
 |   2   | [Cube Conundrum](https://adventofcode.com/2023/day/2) | [`day2.rs`](aoc2023/src/day2.rs) |
 |   3   | [Gear Ratios](https://adventofcode.com/2023/day/3)    | [`day3.rs`](aoc2023/src/day3.rs) |
+|   4   | [Scratchcards](https://adventofcode.com/2023/day/4)   | [`day4.rs`](aoc2023/src/day4.rs) |
 
 </td><td>
 
@@ -30,6 +31,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 3.933 µs  | 45.46 µs |
 | 493.8 µs  | 1.063 µs |
 | 1.146 µs  | 429.6 µs |
+| 58.79 µs  | 27.72 µs |
 
 </td><td>
 
@@ -38,6 +40,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 0.422 µs  | 776.7 µs |
 | 298.0 µs  | 1.108 µs |
 | 0.419 µs  | 308.1 µs |
+| 53.39 µs  | 28.44 µs |
 
 </td></tr>
 </table>
