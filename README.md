@@ -17,12 +17,13 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 <tr><th>Day</th><th>Part 1 Performance</th><th>Part 2 Performance</th></tr>
 <tr><td>
 
-|   D   | Puzzle                                                |               Code               |
-| :---: | ----------------------------------------------------- | :------------------------------: |
-|   1   | [Trebuchet?!](https://adventofcode.com/2023/day/1)    | [`day1.rs`](aoc2023/src/day1.rs) |
-|   2   | [Cube Conundrum](https://adventofcode.com/2023/day/2) | [`day2.rs`](aoc2023/src/day2.rs) |
-|   3   | [Gear Ratios](https://adventofcode.com/2023/day/3)    | [`day3.rs`](aoc2023/src/day3.rs) |
-|   4   | [Scratchcards](https://adventofcode.com/2023/day/4)   | [`day4.rs`](aoc2023/src/day4.rs) |
+|   D   | Puzzle                                                                 |               Code               |
+| :---: | ---------------------------------------------------------------------- | :------------------------------: |
+|   1   | [Trebuchet?!](https://adventofcode.com/2023/day/1)                     | [`day1.rs`](aoc2023/src/day1.rs) |
+|   2   | [Cube Conundrum](https://adventofcode.com/2023/day/2)                  | [`day2.rs`](aoc2023/src/day2.rs) |
+|   3   | [Gear Ratios](https://adventofcode.com/2023/day/3)                     | [`day3.rs`](aoc2023/src/day3.rs) |
+|   4   | [Scratchcards](https://adventofcode.com/2023/day/4)                    | [`day4.rs`](aoc2023/src/day4.rs) |
+|   5   | [If You Give A Seed A Fertilizer](https://adventofcode.com/2023/day/5) | [`day5.rs`](aoc2023/src/day5.rs) |
 
 </td><td>
 
@@ -32,6 +33,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 493.8 µs  | 1.063 µs |
 | 1.146 µs  | 429.6 µs |
 | 58.79 µs  | 27.72 µs |
+| 19.61 µs  | 5.510 µs |
 
 </td><td>
 
@@ -41,13 +43,15 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 298.0 µs  | 1.108 µs |
 | 0.419 µs  | 308.1 µs |
 | 53.39 µs  | 28.44 µs |
+| 16.38 µs  | 24.112 s |
 
 </td></tr>
 </table>
 
 ## Instructions
 
-### <a href="#-usage-in-rust"><img src="https://rustacean.net/assets/rustacean-flat-noshadow.svg" width="16" height="16"></a> Usage in Rust
+<details open>
+<summary><h3><a href="#-rust"><img src="https://rustacean.net/assets/rustacean-flat-noshadow.svg" width="16" height="16"></a> Rust</h3></summary>
 
 #### <a href="#-test-the-correctness-of-solutions"><img src="https://www.svgrepo.com/show/271355/rocket-ship-rocket.svg" width="14" height="14"></a> Get Answers and Run Performance Benchmarks
 
@@ -65,7 +69,10 @@ All days also include tests using sample inputs from the puzzle descriptions.
 cargo test
 ```
 
-### <a href="#-docker"><img src="https://www.svgrepo.com/show/448221/docker.svg" width="16" height="16"></a> Docker
+</details>
+
+<details>
+<summary><h3><a href="#-docker"><img src="https://www.svgrepo.com/show/448221/docker.svg" width="16" height="16"></a> Docker</h3></summary>
 
 > To install [Docker](https://docs.docker.com/get-docker) on your system, you can run [`.docker/host/install_docker.bash`](.docker/host/install_docker.bash) to configure Docker with NVIDIA GPU support.
 >
@@ -110,6 +117,8 @@ To join a running Docker container from another terminal, you can use [`.docker/
 ```bash
 .docker/join.bash ${CMD:-bash}
 ```
+
+</details>
 
 ## License
 
