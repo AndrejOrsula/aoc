@@ -17,13 +17,13 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 <tr><th>Day</th><th>Part 1 Performance</th><th>Part 2 Performance</th></tr>
 <tr><td>
 
-|   D   | Puzzle                                                                 |               Code               |
-| :---: | ---------------------------------------------------------------------- | :------------------------------: |
-|   1   | [Trebuchet?!](https://adventofcode.com/2023/day/1)                     | [`day1.rs`](aoc2023/src/day1.rs) |
-|   2   | [Cube Conundrum](https://adventofcode.com/2023/day/2)                  | [`day2.rs`](aoc2023/src/day2.rs) |
-|   3   | [Gear Ratios](https://adventofcode.com/2023/day/3)                     | [`day3.rs`](aoc2023/src/day3.rs) |
-|   4   | [Scratchcards](https://adventofcode.com/2023/day/4)                    | [`day4.rs`](aoc2023/src/day4.rs) |
-|   5   | [If You Give A Seed A Fertilizer](https://adventofcode.com/2023/day/5) | [`day5.rs`](aoc2023/src/day5.rs) |
+|   D   | Puzzle                                                        |               Code               |
+| :---: | ------------------------------------------------------------- | :------------------------------: |
+|   1   | [Trebuchet?!](https://adventofcode.com/2023/day/1)            | [`day1.rs`](aoc2023/src/day1.rs) |
+|   2   | [Cube Conundrum](https://adventofcode.com/2023/day/2)         | [`day2.rs`](aoc2023/src/day2.rs) |
+|   3   | [Gear Ratios](https://adventofcode.com/2023/day/3)            | [`day3.rs`](aoc2023/src/day3.rs) |
+|   4   | [Scratchcards](https://adventofcode.com/2023/day/4)           | [`day4.rs`](aoc2023/src/day4.rs) |
+|   5   | [If You Give A Seed ...](https://adventofcode.com/2023/day/5) | [`day5.rs`](aoc2023/src/day5.rs) |
 
 </td><td>
 

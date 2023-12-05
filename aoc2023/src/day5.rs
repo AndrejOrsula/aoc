@@ -2,6 +2,8 @@ use aoc_runner_derive::{aoc, aoc_generator};
 
 #[aoc_generator(day5)]
 fn parse(input: &str) -> utils::Almanac {
+    use itertools::Itertools;
+
     let mut input_caterogies = input.split("\n\n");
     let seeds = input_caterogies
         .next()
@@ -14,13 +16,15 @@ fn parse(input: &str) -> utils::Almanac {
         .collect();
     let mappings = input_caterogies
         .map(|category| {
-            let lines = category.lines().skip(1);
-            lines
+            category
+                .lines()
+                .skip(1)
                 .map(|line| {
-                    let mut numbers = line.split_ascii_whitespace();
-                    let destination_start = numbers.next().unwrap().parse().unwrap();
-                    let source_start = numbers.next().unwrap().parse().unwrap();
-                    let range_length = numbers.next().unwrap().parse().unwrap();
+                    let (destination_start, source_start, range_length) = line
+                        .split_ascii_whitespace()
+                        .map(|s| s.parse().unwrap())
+                        .next_tuple()
+                        .unwrap();
                     utils::RangeMap {
                         from: std::ops::Range {
                             start: source_start,
@@ -56,20 +60,14 @@ fn part1(input: &utils::Almanac) -> u64 {
     seeds
         .iter()
         .map(|&seed| {
-            let mut value = seed;
-            let mut min_location = u64::MAX;
-            for i in 0..mappings.len() {
-                for range_map in &mappings[i] {
-                    if range_map.from.contains(&value) {
-                        value = range_map.to.start + (value - range_map.from.start);
-                        break;
-                    }
-                }
-                if i == mappings.len() - 1 && value < min_location {
-                    min_location = value;
-                }
-            }
-            min_location
+            mappings.iter().fold(seed, |value, mapping| {
+                mapping
+                    .iter()
+                    .find(|&range_map| range_map.from.contains(&value))
+                    .map_or(value, |range_map| {
+                        value + range_map.to.start - range_map.from.start
+                    })
+            })
         })
         .min()
         .unwrap()
@@ -82,24 +80,22 @@ fn part2(input: &utils::Almanac) -> u64 {
     let utils::Almanac { seeds, mappings } = input;
     seeds
         .chunks(2)
-        .map(|w| {
-            (w[0]..=w[0] + w[1])
+        .map(|chunk| {
+            let (seed_range_start, seed_range_end) = (chunk[0], chunk[0] + chunk[1]);
+            seed_range_start..seed_range_end
+        })
+        .map(|seed_range| {
+            seed_range
                 .into_par_iter()
                 .map(|seed| {
-                    let mut value = seed;
-                    let mut min_location = u64::MAX;
-                    for i in 0..mappings.len() {
-                        for range_map in &mappings[i] {
-                            if range_map.from.contains(&value) {
-                                value = range_map.to.start + (value - range_map.from.start);
-                                break;
-                            }
-                        }
-                        if i == mappings.len() - 1 && value < min_location {
-                            min_location = value;
-                        }
-                    }
-                    min_location
+                    mappings.iter().fold(seed, |value, mapping| {
+                        mapping
+                            .iter()
+                            .find(|&range_map| range_map.from.contains(&value))
+                            .map_or(value, |range_map| {
+                                value + range_map.to.start - range_map.from.start
+                            })
+                    })
                 })
                 .min()
                 .unwrap()
