@@ -30,10 +30,7 @@ fn parse(input: &str) -> utils::Almanac {
                             start: source_start,
                             end: source_start.checked_add(range_length).unwrap(),
                         },
-                        to: std::ops::Range {
-                            start: destination_start,
-                            end: destination_start.checked_add(range_length).unwrap(),
-                        },
+                        to_start: destination_start,
                     }
                 })
                 .collect()
@@ -50,7 +47,7 @@ mod utils {
 
     pub struct RangeMap {
         pub from: std::ops::Range<u64>,
-        pub to: std::ops::Range<u64>,
+        pub to_start: u64,
     }
 }
 
@@ -65,7 +62,7 @@ fn part1(input: &utils::Almanac) -> u64 {
                     .iter()
                     .find(|&range_map| range_map.from.contains(&value))
                     .map_or(value, |range_map| {
-                        value + range_map.to.start - range_map.from.start
+                        value + range_map.to_start - range_map.from.start
                     })
             })
         })
@@ -79,23 +76,38 @@ fn part2(input: &utils::Almanac) -> u64 {
 
     let utils::Almanac { seeds, mappings } = input;
     seeds
-        .chunks(2)
+        .par_chunks(2)
         .map(|chunk| {
             let (seed_range_start, seed_range_end) = (chunk[0], chunk[0] + chunk[1]);
             seed_range_start..seed_range_end
         })
         .map(|seed_range| {
+            let mut cached_index =
+                smallvec::SmallVec::<[usize; 7]>::from_elem(usize::MAX, mappings.len());
+            let mut cached_diff = smallvec::SmallVec::<[i64; 7]>::from_elem(0, mappings.len());
             seed_range
-                .into_par_iter()
                 .map(|seed| {
-                    mappings.iter().fold(seed, |value, mapping| {
-                        mapping
-                            .iter()
-                            .find(|&range_map| range_map.from.contains(&value))
-                            .map_or(value, |range_map| {
-                                value + range_map.to.start - range_map.from.start
-                            })
-                    })
+                    mappings
+                        .iter()
+                        .enumerate()
+                        .fold(seed, |value, (i, mapping)| {
+                            if cached_index[i] != usize::MAX
+                                && mapping[cached_index[i]].from.contains(&value)
+                            {
+                                value.wrapping_add_signed(cached_diff[i])
+                            } else {
+                                mapping
+                                    .iter()
+                                    .enumerate()
+                                    .find(|(_, range_map)| range_map.from.contains(&value))
+                                    .map_or(value, |(j, range_map)| {
+                                        cached_index[i] = j;
+                                        cached_diff[i] = i64::try_from(range_map.to_start).unwrap()
+                                            - i64::try_from(range_map.from.start).unwrap();
+                                        value.wrapping_add_signed(cached_diff[i])
+                                    })
+                            }
+                        })
                 })
                 .min()
                 .unwrap()

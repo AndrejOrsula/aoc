@@ -43,7 +43,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 298.0 µs  | 1.108 µs |
 | 0.419 µs  | 308.1 µs |
 | 53.39 µs  | 28.44 µs |
-| 16.38 µs  | 24.112 s |
+| 16.38 µs  | 19.364 s |
 
 </td></tr>
 </table>
