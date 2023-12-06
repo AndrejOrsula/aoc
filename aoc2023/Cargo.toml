@@ -16,6 +16,7 @@ aoc-runner-derive = { workspace = true }
 indoc = { workspace = true }
 
 itertools = { version = "0.12" }
+num-integer = { version = "0.1" }
 rayon = { version = "1.8" }
 regex = { version = "1.10" }
 smallvec = { version = "1.11" }
