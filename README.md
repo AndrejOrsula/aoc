@@ -25,6 +25,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 |   4   | [Scratchcards](https://adventofcode.com/2023/day/4)           | [`day4.rs`](aoc2023/src/day4.rs) |
 |   5   | [If You Give A Seed ...](https://adventofcode.com/2023/day/5) | [`day5.rs`](aoc2023/src/day5.rs) |
 |   6   | [Wait For It](https://adventofcode.com/2023/day/6)            | [`day6.rs`](aoc2023/src/day6.rs) |
+|   7   | [Camel Cards](https://adventofcode.com/2023/day/7)            | [`day7.rs`](aoc2023/src/day7.rs) |
 
 </td><td>
 
@@ -36,6 +37,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 58.79 µs  | 27.72 µs |
 | 19.61 µs  | 5.510 µs |
 | 1.432 µs  | 0.345 µs |
+| 117.3 µs  | 70.08 µs |
 
 </td><td>
 
@@ -47,6 +49,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 53.39 µs  | 28.44 µs |
 | 16.38 µs  | 19.364 s |
 | 0.513 µs  | 0.650 µs |
+| 136.1 µs  | 65.87 µs |
 
 </td></tr>
 </table>
