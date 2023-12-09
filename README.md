@@ -40,7 +40,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 19.61 µs  | 5.510 µs |
 | 1.432 µs  | 0.345 µs |
 | 117.3 µs  | 70.08 µs |
-| 168.5 µs  | 819.3 µs |
+| 109.8 µs  | 314.2 µs |
 | 88.05 µs  | 38.84 µs |
 
 </td><td>
@@ -54,7 +54,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 16.38 µs  | 19.364 s |
 | 0.513 µs  | 0.650 µs |
 | 136.1 µs  | 65.87 µs |
-| 118.8 µs, | 2.450 ms |
+| 82.85 µs  | 703.8 µs |
 | 80.19 µs  | 45.75 µs |
 
 </td></tr>

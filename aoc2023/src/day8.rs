@@ -15,7 +15,7 @@ fn parse(input: &str) -> utils::Network {
             _ => panic!("Invalid input"),
         })
         .collect();
-    let mut map = std::collections::HashMap::new();
+    let mut map = rustc_hash::FxHashMap::default();
     for line in lines.skip(1) {
         let (key, steps) = line.split('=').collect_tuple().unwrap();
         let key = key.trim().to_string();
@@ -37,105 +37,75 @@ fn parse(input: &str) -> utils::Network {
 mod utils {
     pub struct Network {
         pub steps: Vec<usize>,
-        pub map: std::collections::HashMap<String, [String; 2]>,
+        pub map: rustc_hash::FxHashMap<String, [String; 2]>,
     }
 }
 
 #[aoc(day8, part1)]
 fn part1(input: &utils::Network) -> u64 {
     // Begin at "AAA"
-    let mut current_node = "AAA".to_string();
+    let mut current_node = "AAA";
 
     // Keep looping until the end is reached
     let mut step_counter = 0;
-    'outer: loop {
+    loop {
         // Iterate over all steps
-        for step in &input.steps {
+        for &step in &input.steps {
             step_counter += 1;
 
             // Update the current node
-            current_node = input.map[&current_node][*step].to_string();
+            current_node = input.map[current_node][step].as_str();
 
-            // Break once the end is reached
+            // Return once the end is reached
             if current_node == "ZZZ" {
-                break 'outer;
+                return step_counter;
             }
         }
     }
-
-    step_counter
 }
 
 #[aoc(day8, part2)]
 fn part2(input: &utils::Network) -> u64 {
-    use itertools::Itertools;
-    use part2_utils::Path;
-
     // Find all nodes that end with 'A'
-    let mut paths = input
+    let mut nodes: smallvec::SmallVec<[&str; 8]> = input
         .map
         .keys()
         .filter(|k| k.ends_with('A'))
-        .map(Path::new)
-        .collect_vec();
+        .map(String::as_str)
+        .collect();
+
+    // Keep track of the lowest common multiple of all paths
+    let mut lcs = 1;
 
     // Keep looping until all paths are finished
     let mut step_counter = 0;
-    let mut paths_in_progress = (0..paths.len()).collect_vec();
-    let mut finished_paths = smallvec::SmallVec::<[usize; 10]>::new();
-    'outer: loop {
+    let mut finished_paths = smallvec::SmallVec::<[usize; 2]>::new();
+    loop {
         // Iterate over all steps
-        for step in &input.steps {
+        for &step in &input.steps {
             step_counter += 1;
 
-            // Update all paths in progress
-            paths_in_progress.iter().enumerate().for_each(|(i, &path)| {
-                let Path {
-                    current_node,
-                    steps_taken,
-                } = &mut paths[path];
-                *current_node = input.map[current_node][*step].to_string();
-                if current_node.ends_with('Z') {
-                    *steps_taken = step_counter;
+            // Update all active paths
+            nodes.iter_mut().enumerate().for_each(|(i, node)| {
+                *node = input.map[*node][step].as_str();
+                if node.ends_with('Z') {
                     finished_paths.push(i);
                 }
             });
 
-            // Remove finished paths from progress list
-            for &i in &finished_paths {
-                paths_in_progress.swap_remove(i);
-            }
+            if !finished_paths.is_empty() {
+                // Update the lowest common multiple
+                lcs = num::integer::lcm(lcs, step_counter);
 
-            // Break once all paths are finished
-            if paths_in_progress.is_empty() {
-                break 'outer;
-            }
-            finished_paths.clear();
-        }
-    }
+                // Return once all nodes are finished
+                if nodes.len() == finished_paths.len() {
+                    return lcs;
+                }
 
-    // Find the least common multiple of all paths
-    paths[1..].iter().fold(
-        paths[0].steps_taken,
-        |acc,
-         Path {
-             current_node: _,
-             steps_taken,
-         }| { num::integer::lcm(acc, *steps_taken) },
-    )
-}
-
-mod part2_utils {
-    pub struct Path {
-        pub current_node: String,
-        pub steps_taken: u64,
-    }
-
-    impl Path {
-        pub fn new(first_node: &impl ToString) -> Self {
-            Self {
-                current_node: first_node.to_string(),
-                steps_taken: 0,
+                // Remove all finished nodes
+                while let Some(i) = finished_paths.pop() {
+                    nodes.swap_remove(i);
+                }
             }
         }
     }
