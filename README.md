@@ -17,17 +17,18 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 <tr><th>Day</th><th>Part 1 Performance</th><th>Part 2 Performance</th></tr>
 <tr><td>
 
-|   D   | Puzzle                                                        |               Code               |
-| :---: | ------------------------------------------------------------- | :------------------------------: |
-|   1   | [Trebuchet?!](https://adventofcode.com/2023/day/1)            | [`day1.rs`](aoc2023/src/day1.rs) |
-|   2   | [Cube Conundrum](https://adventofcode.com/2023/day/2)         | [`day2.rs`](aoc2023/src/day2.rs) |
-|   3   | [Gear Ratios](https://adventofcode.com/2023/day/3)            | [`day3.rs`](aoc2023/src/day3.rs) |
-|   4   | [Scratchcards](https://adventofcode.com/2023/day/4)           | [`day4.rs`](aoc2023/src/day4.rs) |
-|   5   | [If You Give A Seed ...](https://adventofcode.com/2023/day/5) | [`day5.rs`](aoc2023/src/day5.rs) |
-|   6   | [Wait For It](https://adventofcode.com/2023/day/6)            | [`day6.rs`](aoc2023/src/day6.rs) |
-|   7   | [Camel Cards](https://adventofcode.com/2023/day/7)            | [`day7.rs`](aoc2023/src/day7.rs) |
-|   8   | [Haunted Wasteland](https://adventofcode.com/2023/day/8)      | [`day8.rs`](aoc2023/src/day8.rs) |
-|   9   | [Mirage Maintenance](https://adventofcode.com/2023/day/9)     | [`day9.rs`](aoc2023/src/day9.rs) |
+|   D   | Puzzle                                                        |                Code                |
+| :---: | ------------------------------------------------------------- | :--------------------------------: |
+|   1   | [Trebuchet?!](https://adventofcode.com/2023/day/1)            |  [`day1.rs`](aoc2023/src/day1.rs)  |
+|   2   | [Cube Conundrum](https://adventofcode.com/2023/day/2)         |  [`day2.rs`](aoc2023/src/day2.rs)  |
+|   3   | [Gear Ratios](https://adventofcode.com/2023/day/3)            |  [`day3.rs`](aoc2023/src/day3.rs)  |
+|   4   | [Scratchcards](https://adventofcode.com/2023/day/4)           |  [`day4.rs`](aoc2023/src/day4.rs)  |
+|   5   | [If You Give A Seed ...](https://adventofcode.com/2023/day/5) |  [`day5.rs`](aoc2023/src/day5.rs)  |
+|   6   | [Wait For It](https://adventofcode.com/2023/day/6)            |  [`day6.rs`](aoc2023/src/day6.rs)  |
+|   7   | [Camel Cards](https://adventofcode.com/2023/day/7)            |  [`day7.rs`](aoc2023/src/day7.rs)  |
+|   8   | [Haunted Wasteland](https://adventofcode.com/2023/day/8)      |  [`day8.rs`](aoc2023/src/day8.rs)  |
+|   9   | [Mirage Maintenance](https://adventofcode.com/2023/day/9)     |  [`day9.rs`](aoc2023/src/day9.rs)  |
+|  10   | [Pipe Maze](https://adventofcode.com/2023/day/10)             | [`day10.rs`](aoc2023/src/day10.rs) |
 
 </td><td>
 
@@ -42,6 +43,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 117.3 µs  | 70.08 µs |
 | 109.8 µs  | 314.2 µs |
 | 88.05 µs  | 38.84 µs |
+| 126.5 µs  | 147.0 µs |
 
 </td><td>
 
@@ -56,6 +58,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 136.1 µs  | 65.87 µs |
 | 82.85 µs  | 703.8 µs |
 | 80.19 µs  | 45.75 µs |
+| 134.1 µs  | 196.6 µs |
 
 </td></tr>
 </table>

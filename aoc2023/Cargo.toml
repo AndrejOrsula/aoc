@@ -19,6 +19,7 @@ arrayvec = { version = "0.7" }
 itertools = { version = "0.12" }
 num = { version = "0.4" }
 num-integer = { version = "0.1" }
+pathfinding = { version = "4.4" }
 rayon = { version = "1.8" }
 regex = { version = "1.10" }
 rustc-hash = { version = "1.1" }
