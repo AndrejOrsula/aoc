@@ -5,14 +5,14 @@ fn parse1(input: &str) -> Vec<(usize, usize)> {
     utils::parse_expanded_galaxies(input, 1)
 }
 
-#[aoc(day11, part1)]
-fn part1(input: &[(usize, usize)]) -> usize {
-    utils::sum_galactic_distances(input)
-}
-
 #[aoc_generator(day11, part2)]
 fn parse2(input: &str) -> Vec<(usize, usize)> {
     utils::parse_expanded_galaxies(input, 999_999)
+}
+
+#[aoc(day11, part1)]
+fn part1(input: &[(usize, usize)]) -> usize {
+    utils::sum_galactic_distances(input)
 }
 
 #[aoc(day11, part2)]
