@@ -5,14 +5,14 @@ fn parse1(input: &str) -> Vec<utils::CardHandWithBid<utils::part1::CamelCard>> {
     utils::parse(input)
 }
 
-#[aoc(day7, part1)]
-fn part1(input: &[utils::CardHandWithBid<utils::part1::CamelCard>]) -> u64 {
-    utils::solve(input)
-}
-
 #[aoc_generator(day7, part2)]
 fn parse2(input: &str) -> Vec<utils::CardHandWithBid<utils::part2::CamelCard>> {
     utils::parse(input)
+}
+
+#[aoc(day7, part1)]
+fn part1(input: &[utils::CardHandWithBid<utils::part1::CamelCard>]) -> u64 {
+    utils::solve(input)
 }
 
 #[aoc(day7, part2)]
@@ -154,7 +154,7 @@ mod utils {
 
         impl From<[CamelCard; 5]> for HandType {
             fn from(value: [CamelCard; 5]) -> Self {
-                let mut hand_types_raw = arrayvec::ArrayVec::<Self, 2>::new();
+                let mut hand_types_raw = smallvec::SmallVec::<[Self; 2]>::new();
                 for card in CamelCard::iter() {
                     match value.iter().filter(|&&c| c == card).count() {
                         2 => hand_types_raw.push(Self::OnePair),
@@ -234,7 +234,7 @@ mod utils {
 
         impl From<[CamelCard; 5]> for HandType {
             fn from(value: [CamelCard; 5]) -> Self {
-                let mut hand_types_raw = arrayvec::ArrayVec::<Self, 2>::new();
+                let mut hand_types_raw = smallvec::SmallVec::<[Self; 2]>::new();
                 let mut n_jokers = 0;
                 for card in CamelCard::iter() {
                     let n_cards = value.iter().filter(|&&c| c == card).count();
