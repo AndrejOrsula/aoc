@@ -1,31 +1,23 @@
 use aoc_runner_derive::{aoc, aoc_generator};
-use std::str::FromStr;
 
 #[aoc_generator(day2)]
 fn parse(input: &str) -> Vec<utils::Game> {
-    let regex_game_id = regex::Regex::new(r"Game (\d+):").unwrap();
-    let regex_game_content = regex::Regex::new(r"Game \d+: (.+)").unwrap();
+    use std::str::FromStr;
 
     input
         .lines()
         .map(|line| {
+            let (game_id, game_content) = line.split_once(": ").unwrap();
+
             // Parse game ID
-            let game_id = regex_game_id
-                .captures(line)
+            let game_id = game_id
+                .split_ascii_whitespace()
+                .last()
                 .unwrap()
-                .get(1)
-                .unwrap()
-                .as_str()
                 .parse()
                 .unwrap();
 
             // Parse game content into cube sets
-            let game_content = regex_game_content
-                .captures(line)
-                .unwrap()
-                .get(1)
-                .unwrap()
-                .as_str();
             let cube_sets = game_content
                 .split(';')
                 .map(|cubes| {
@@ -44,50 +36,6 @@ fn parse(input: &str) -> Vec<utils::Game> {
             utils::Game { game_id, cube_sets }
         })
         .collect()
-}
-
-mod utils {
-    #[derive(Debug)]
-    pub struct Game {
-        pub game_id: u32,
-        pub cube_sets: Vec<CubeSet>,
-    }
-
-    #[derive(Debug, Default)]
-    pub struct CubeSet {
-        pub n_red: u8,
-        pub n_green: u8,
-        pub n_blue: u8,
-    }
-
-    impl CubeSet {
-        pub fn set_n_color(&mut self, color: &Color, n: u8) {
-            match color {
-                Color::Red => self.n_red = n,
-                Color::Green => self.n_green = n,
-                Color::Blue => self.n_blue = n,
-            }
-        }
-    }
-
-    #[derive(Debug)]
-    pub enum Color {
-        Red,
-        Green,
-        Blue,
-    }
-
-    impl std::str::FromStr for Color {
-        type Err = &'static str;
-        fn from_str(s: &str) -> Result<Self, Self::Err> {
-            match s {
-                "red" => Ok(Self::Red),
-                "green" => Ok(Self::Green),
-                "blue" => Ok(Self::Blue),
-                _ => Err("Invalid color"),
-            }
-        }
-    }
 }
 
 #[aoc(day2, part1)]
@@ -135,6 +83,48 @@ fn part2(input: &[utils::Game]) -> u32 {
             u32::from(min_n_red) * u32::from(min_n_green) * u32::from(min_n_blue)
         })
         .sum()
+}
+
+mod utils {
+    pub struct Game {
+        pub game_id: u32,
+        pub cube_sets: Vec<CubeSet>,
+    }
+
+    #[derive(Default)]
+    pub struct CubeSet {
+        pub n_red: u8,
+        pub n_green: u8,
+        pub n_blue: u8,
+    }
+
+    impl CubeSet {
+        pub fn set_n_color(&mut self, color: &Color, n: u8) {
+            match color {
+                Color::Red => self.n_red = n,
+                Color::Green => self.n_green = n,
+                Color::Blue => self.n_blue = n,
+            }
+        }
+    }
+
+    pub enum Color {
+        Red,
+        Green,
+        Blue,
+    }
+
+    impl std::str::FromStr for Color {
+        type Err = &'static str;
+        fn from_str(s: &str) -> Result<Self, Self::Err> {
+            match s {
+                "red" => Ok(Self::Red),
+                "green" => Ok(Self::Green),
+                "blue" => Ok(Self::Blue),
+                _ => Err("Invalid color"),
+            }
+        }
+    }
 }
 
 #[cfg(test)]
