@@ -21,23 +21,21 @@ fn part1(input: &str) -> u32 {
 
 #[aoc(day1, part2)]
 fn part2(input: &str) -> u32 {
-    use part2_utils::Digit;
-
     input
         .lines()
         .map(|line| {
-            let (first_digit, last_digit) = Digit::find_first_and_last(line);
+            let (first_digit, last_digit) = utils::Digit::find_first_and_last(line);
 
             10 * (first_digit as u32) + (last_digit as u32)
         })
         .sum()
 }
 
-mod part2_utils {
+mod utils {
     use strum::{EnumIter, IntoEnumIterator};
 
     #[repr(u32)]
-    #[derive(Debug, Clone, Copy, EnumIter)]
+    #[derive(Clone, Copy, EnumIter)]
     /// Represents a digit from 1 to 9.
     pub enum Digit {
         One = 1,
