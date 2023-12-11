@@ -26,22 +26,6 @@ fn parse(input: &str) -> Vec<utils::Card> {
         .collect()
 }
 
-mod utils {
-    pub struct Card {
-        pub winning_numbers: smallvec::SmallVec<[u8; 10]>,
-        pub our_numbers: smallvec::SmallVec<[u8; 25]>,
-    }
-
-    impl Card {
-        pub fn get_n_matches(&self) -> usize {
-            self.our_numbers
-                .iter()
-                .filter(|n| self.winning_numbers.contains(n))
-                .count()
-        }
-    }
-}
-
 #[aoc(day4, part1)]
 fn part1(input: &[utils::Card]) -> u32 {
     input
@@ -71,6 +55,22 @@ fn part2(input: &[utils::Card]) -> u32 {
             current_card_count
         })
         .sum()
+}
+
+mod utils {
+    pub struct Card {
+        pub winning_numbers: smallvec::SmallVec<[u8; 10]>,
+        pub our_numbers: smallvec::SmallVec<[u8; 25]>,
+    }
+
+    impl Card {
+        pub fn get_n_matches(&self) -> usize {
+            self.our_numbers
+                .iter()
+                .filter(|n| self.winning_numbers.contains(n))
+                .count()
+        }
+    }
 }
 
 #[cfg(test)]
