@@ -47,21 +47,21 @@ fn part1(input: &str) -> u32 {
                 if (
                     // Character to the left of the number
                     index_before_num.is_some_and(|index_before_num| {
-                        part1_utils::is_special_symbol(current_line.chars().nth(index_before_num).unwrap())
+                        utils::is_special_symbol(current_line.chars().nth(index_before_num).unwrap())
                     })
                     // Character to the right of the number
                     || current_line
                                 .chars()
-                                .nth(index_after_num).is_some_and(part1_utils::is_special_symbol)
+                                .nth(index_after_num).is_some_and(utils::is_special_symbol)
                     // Characters above the number
                     || line_above.is_some_and(|line_above| {
                         line_above[index_before_num.unwrap_or(0)..index_after_num.saturating_add(1).min(line_max_index)].chars()
-                            .any(part1_utils::is_special_symbol)
+                            .any(utils::is_special_symbol)
                     })
                     // Characters below the number
                     || line_below.is_some_and(|line_below| {
                         line_below[index_before_num.unwrap_or(0)..index_after_num.saturating_add(1).min(line_max_index)].chars()
-                            .any(part1_utils::is_special_symbol)
+                            .any(utils::is_special_symbol)
                     })
                 ) {
                     // Add the number to the sum
@@ -78,13 +78,6 @@ fn part1(input: &str) -> u32 {
     sum
 }
 
-mod part1_utils {
-    /// Returns `true` if the character is a special symbol (excluding '.').
-    pub fn is_special_symbol(c: char) -> bool {
-        c != '.' && c.is_ascii_graphic()
-    }
-}
-
 #[aoc(day3, part2)]
 fn part2(input: &str) -> u32 {
     // Sum of all products between two numbers that are connected by a gear ('*')
@@ -96,7 +89,7 @@ fn part2(input: &str) -> u32 {
     // Iterate over the lines in the input
     for (current_line_index, current_line) in input.lines().enumerate() {
         // Skip lines that do not contain any gears
-        if !current_line.contains(part2_utils::is_gear) {
+        if !current_line.contains(utils::is_gear) {
             continue;
         }
 
@@ -109,7 +102,7 @@ fn part2(input: &str) -> u32 {
         // Iterate over the characters in the line and find the gears
         for (index, c) in current_line.char_indices() {
             // Skip non-gear characters
-            if !part2_utils::is_gear(c) {
+            if !utils::is_gear(c) {
                 continue;
             }
 
@@ -201,7 +194,12 @@ fn part2(input: &str) -> u32 {
     sum
 }
 
-mod part2_utils {
+mod utils {
+    /// Returns `true` if the character is a special symbol (excluding '.').
+    pub fn is_special_symbol(c: char) -> bool {
+        c != '.' && c.is_ascii_graphic()
+    }
+
     /// Returns `true` if the character is a gear ('*').
     pub fn is_gear(c: char) -> bool {
         c == '*'
@@ -233,6 +231,6 @@ mod tests {
 
     #[test]
     fn part2_example() {
-        assert_eq!(part2(&parse(SAMPLE)), 467835);
+        assert_eq!(part2(&parse(SAMPLE)), 467_835);
     }
 }
