@@ -39,18 +39,6 @@ fn parse(input: &str) -> utils::Almanac {
     utils::Almanac { seeds, mappings }
 }
 
-mod utils {
-    pub struct Almanac {
-        pub seeds: smallvec::SmallVec<[u64; 20]>,
-        pub mappings: smallvec::SmallVec<[Vec<RangeMap>; 7]>,
-    }
-
-    pub struct RangeMap {
-        pub from: std::ops::Range<u64>,
-        pub to_start: u64,
-    }
-}
-
 #[aoc(day5, part1)]
 fn part1(input: &utils::Almanac) -> u64 {
     let utils::Almanac { seeds, mappings } = input;
@@ -114,6 +102,18 @@ fn part2(input: &utils::Almanac) -> u64 {
         })
         .min()
         .unwrap()
+}
+
+mod utils {
+    pub struct Almanac {
+        pub seeds: smallvec::SmallVec<[u64; 20]>,
+        pub mappings: smallvec::SmallVec<[Vec<RangeMap>; 7]>,
+    }
+
+    pub struct RangeMap {
+        pub from: std::ops::Range<u64>,
+        pub to_start: u64,
+    }
 }
 
 #[cfg(test)]
