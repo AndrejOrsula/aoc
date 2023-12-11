@@ -29,6 +29,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 |   8   | [Haunted Wasteland](https://adventofcode.com/2023/day/8)      |  [`day8.rs`](aoc2023/src/day8.rs)  |
 |   9   | [Mirage Maintenance](https://adventofcode.com/2023/day/9)     |  [`day9.rs`](aoc2023/src/day9.rs)  |
 |  10   | [Pipe Maze](https://adventofcode.com/2023/day/10)             | [`day10.rs`](aoc2023/src/day10.rs) |
+|  11   | [Cosmic Expansion](https://adventofcode.com/2023/day/11)      | [`day11.rs`](aoc2023/src/day11.rs) |
 
 </td><td>
 
@@ -44,6 +45,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 109.8 µs  | 314.2 µs |
 | 88.05 µs  | 38.84 µs |
 | 126.5 µs  | 147.0 µs |
+| 6.720 ms  | 1.116 ms |
 
 </td><td>
 
@@ -59,6 +61,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 82.85 µs  | 703.8 µs |
 | 80.19 µs  | 45.75 µs |
 | 134.1 µs  | 196.6 µs |
+| 7.331 ms  | 1.136 ms |
 
 </td></tr>
 </table>
