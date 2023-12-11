@@ -24,8 +24,51 @@ fn parse(input: &str) -> utils::Map {
     }
 }
 
+#[aoc(day10, part1)]
+fn part1(input: &utils::Map) -> usize {
+    // The furthest point from the start is always the middle of the loop
+    input.get_loop().len() / 2
+}
+
+#[aoc(day10, part2)]
+fn part2(input: &utils::Map) -> usize {
+    // Construct a grid that only contains the loop
+    let mut enclosure =
+        pathfinding::matrix::Matrix::new(input.grid.rows, input.grid.columns, utils::Tile::Ground);
+    for position in input.get_loop() {
+        enclosure[position] = input.grid[position];
+    }
+
+    // Iterate over the rows of the enclosure, while skipping the first and last rows (not inside the enclosure)
+    enclosure
+        .iter()
+        .skip(1)
+        .take(enclosure.rows - 2)
+        .map(|row| {
+            row.iter()
+                .fold((0, false), |(mut n_inside, mut is_inside), &tile| {
+                    // Detect the start and discontinuities of the enclosure
+                    if let utils::Tile::PipeNorthSouth
+                    | utils::Tile::BendNorthWest
+                    | utils::Tile::BendNorthEast = tile
+                    {
+                        is_inside = !is_inside;
+                    }
+
+                    // Count only the ground tiles inside the enclosure
+                    if is_inside && tile == utils::Tile::Ground {
+                        n_inside += 1;
+                    }
+
+                    (n_inside, is_inside)
+                })
+                .0
+        })
+        .sum()
+}
+
 mod utils {
-    #[derive(Debug, Clone, Copy, PartialEq)]
+    #[derive(Clone, Copy, PartialEq)]
     pub enum Tile {
         PipeNorthSouth,
         PipeWestEast,
@@ -123,49 +166,6 @@ mod utils {
             unreachable!("All possible initial directions are covered!")
         }
     }
-}
-
-#[aoc(day10, part1)]
-fn part1(input: &utils::Map) -> usize {
-    // The furthest point from the start is always the middle of the loop
-    input.get_loop().len() / 2
-}
-
-#[aoc(day10, part2)]
-fn part2(input: &utils::Map) -> usize {
-    // Construct a grid that only contains the loop
-    let mut enclosure =
-        pathfinding::matrix::Matrix::new(input.grid.rows, input.grid.columns, utils::Tile::Ground);
-    for position in input.get_loop() {
-        enclosure[position] = input.grid[position];
-    }
-
-    // Iterate over the rows of the enclosure, while skipping the first and last rows (not inside the enclosure)
-    enclosure
-        .iter()
-        .skip(1)
-        .take(enclosure.rows - 2)
-        .map(|row| {
-            row.iter()
-                .fold((0, false), |(mut n_inside, mut is_inside), &tile| {
-                    // Detect the start and discontinuities of the enclosure
-                    if let utils::Tile::PipeNorthSouth
-                    | utils::Tile::BendNorthWest
-                    | utils::Tile::BendNorthEast = tile
-                    {
-                        is_inside = !is_inside;
-                    }
-
-                    // Count only the ground tiles inside the enclosure
-                    if is_inside && tile == utils::Tile::Ground {
-                        n_inside += 1;
-                    }
-
-                    (n_inside, is_inside)
-                })
-                .0
-        })
-        .sum()
 }
 
 #[cfg(test)]
