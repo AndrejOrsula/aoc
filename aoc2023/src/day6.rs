@@ -19,6 +19,16 @@ fn parse(input: &str) -> smallvec::SmallVec<[utils::RaceData; 4]> {
         .collect()
 }
 
+#[aoc(day6, part1)]
+fn part1(input: &[utils::RaceData]) -> u64 {
+    input.iter().map(utils::RaceData::n_record_breaks).product()
+}
+
+#[aoc(day6, part2)]
+fn part2(input: &[utils::RaceData]) -> u64 {
+    utils::RaceData::merge(input).n_record_breaks1()
+}
+
 mod utils {
     pub struct RaceData {
         pub time: String,
@@ -54,16 +64,6 @@ mod utils {
             Self { time, distance }
         }
     }
-}
-
-#[aoc(day6, part1)]
-fn part1(input: &[utils::RaceData]) -> u64 {
-    input.iter().map(utils::RaceData::n_record_breaks).product()
-}
-
-#[aoc(day6, part2)]
-fn part2(input: &[utils::RaceData]) -> u64 {
-    utils::RaceData::merge(input).n_record_breaks1()
 }
 
 #[cfg(test)]
