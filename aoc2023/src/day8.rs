@@ -34,13 +34,6 @@ fn parse(input: &str) -> utils::Network {
     utils::Network { steps, map }
 }
 
-mod utils {
-    pub struct Network {
-        pub steps: Vec<usize>,
-        pub map: rustc_hash::FxHashMap<String, [String; 2]>,
-    }
-}
-
 #[aoc(day8, part1)]
 fn part1(input: &utils::Network) -> u64 {
     // Begin at "AAA"
@@ -108,6 +101,13 @@ fn part2(input: &utils::Network) -> u64 {
                 }
             }
         }
+    }
+}
+
+mod utils {
+    pub struct Network {
+        pub steps: Vec<usize>,
+        pub map: rustc_hash::FxHashMap<String, [String; 2]>,
     }
 }
 
