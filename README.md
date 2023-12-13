@@ -31,6 +31,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 |  10   | [Pipe Maze](https://adventofcode.com/2023/day/10)             | [day10.rs](aoc2023/src/day10.rs) |
 |  11   | [Cosmic Expansion](https://adventofcode.com/2023/day/11)      | [day11.rs](aoc2023/src/day11.rs) |
 |  12   | [Hot Springs](https://adventofcode.com/2023/day/12)           | [day12.rs](aoc2023/src/day12.rs) |
+|  13   | [Point of Incidence](https://adventofcode.com/2023/day/13)    | [day13.rs](aoc2023/src/day13.rs) |
 
 </td><td>
 
@@ -48,6 +49,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 159.7 µs  | 183.6 µs |
 | 7.197 ms  | 1.085 ms |
 | 276.1 µs  | 477.4 µs |
+| 58.49 µs  | 359.9 µs |
 
 </td><td>
 
@@ -65,6 +67,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 163.3 µs  | 222.8 µs |
 | 7.172 ms  | 1.080 ms |
 | 247.1 µs  | 8.984 ms |
+| 10.10 µs  | 192.8 µs |
 
 </td></tr>
 </table>
