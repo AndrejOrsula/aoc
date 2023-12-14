@@ -17,21 +17,22 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 <tr><th>Day</th><th>Part 1 Performance</th><th>Part 2 Performance</th></tr>
 <tr><td>
 
-|   D   | Puzzle                                                        |               Code               |
-| :---: | ------------------------------------------------------------- | :------------------------------: |
-|   1   | [Trebuchet?!](https://adventofcode.com/2023/day/1)            |  [day1.rs](aoc2023/src/day1.rs)  |
-|   2   | [Cube Conundrum](https://adventofcode.com/2023/day/2)         |  [day2.rs](aoc2023/src/day2.rs)  |
-|   3   | [Gear Ratios](https://adventofcode.com/2023/day/3)            |  [day3.rs](aoc2023/src/day3.rs)  |
-|   4   | [Scratchcards](https://adventofcode.com/2023/day/4)           |  [day4.rs](aoc2023/src/day4.rs)  |
-|   5   | [If You Give A Seed ...](https://adventofcode.com/2023/day/5) |  [day5.rs](aoc2023/src/day5.rs)  |
-|   6   | [Wait For It](https://adventofcode.com/2023/day/6)            |  [day6.rs](aoc2023/src/day6.rs)  |
-|   7   | [Camel Cards](https://adventofcode.com/2023/day/7)            |  [day7.rs](aoc2023/src/day7.rs)  |
-|   8   | [Haunted Wasteland](https://adventofcode.com/2023/day/8)      |  [day8.rs](aoc2023/src/day8.rs)  |
-|   9   | [Mirage Maintenance](https://adventofcode.com/2023/day/9)     |  [day9.rs](aoc2023/src/day9.rs)  |
-|  10   | [Pipe Maze](https://adventofcode.com/2023/day/10)             | [day10.rs](aoc2023/src/day10.rs) |
-|  11   | [Cosmic Expansion](https://adventofcode.com/2023/day/11)      | [day11.rs](aoc2023/src/day11.rs) |
-|  12   | [Hot Springs](https://adventofcode.com/2023/day/12)           | [day12.rs](aoc2023/src/day12.rs) |
-|  13   | [Point of Incidence](https://adventofcode.com/2023/day/13)    | [day13.rs](aoc2023/src/day13.rs) |
+|   D   | Puzzle                                                          |               Code               |
+| :---: | --------------------------------------------------------------- | :------------------------------: |
+|   1   | [Trebuchet?!](https://adventofcode.com/2023/day/1)              |  [day1.rs](aoc2023/src/day1.rs)  |
+|   2   | [Cube Conundrum](https://adventofcode.com/2023/day/2)           |  [day2.rs](aoc2023/src/day2.rs)  |
+|   3   | [Gear Ratios](https://adventofcode.com/2023/day/3)              |  [day3.rs](aoc2023/src/day3.rs)  |
+|   4   | [Scratchcards](https://adventofcode.com/2023/day/4)             |  [day4.rs](aoc2023/src/day4.rs)  |
+|   5   | [If You Give A Seed ...](https://adventofcode.com/2023/day/5)   |  [day5.rs](aoc2023/src/day5.rs)  |
+|   6   | [Wait For It](https://adventofcode.com/2023/day/6)              |  [day6.rs](aoc2023/src/day6.rs)  |
+|   7   | [Camel Cards](https://adventofcode.com/2023/day/7)              |  [day7.rs](aoc2023/src/day7.rs)  |
+|   8   | [Haunted Wasteland](https://adventofcode.com/2023/day/8)        |  [day8.rs](aoc2023/src/day8.rs)  |
+|   9   | [Mirage Maintenance](https://adventofcode.com/2023/day/9)       |  [day9.rs](aoc2023/src/day9.rs)  |
+|  10   | [Pipe Maze](https://adventofcode.com/2023/day/10)               | [day10.rs](aoc2023/src/day10.rs) |
+|  11   | [Cosmic Expansion](https://adventofcode.com/2023/day/11)        | [day11.rs](aoc2023/src/day11.rs) |
+|  12   | [Hot Springs](https://adventofcode.com/2023/day/12)             | [day12.rs](aoc2023/src/day12.rs) |
+|  13   | [Point of Incidence](https://adventofcode.com/2023/day/13)      | [day13.rs](aoc2023/src/day13.rs) |
+|  14   | [Parabolic Reflector ...](https://adventofcode.com/2023/day/14) | [day14.rs](aoc2023/src/day14.rs) |
 
 </td><td>
 
@@ -50,6 +51,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 7.197 ms  | 1.085 ms |
 | 276.1 µs  | 477.4 µs |
 | 58.49 µs  | 359.9 µs |
+| 87.00 µs  | 61.28 µs |
 
 </td><td>
 
@@ -68,6 +70,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 7.172 ms  | 1.080 ms |
 | 247.1 µs  | 8.984 ms |
 | 10.10 µs  | 192.8 µs |
+| 72.12 µs  | 38.33 ms |
 
 </td></tr>
 </table>
