@@ -33,6 +33,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 |  12   | [Hot Springs](https://adventofcode.com/2023/day/12)             | [day12.rs](aoc2023/src/day12.rs) |
 |  13   | [Point of Incidence](https://adventofcode.com/2023/day/13)      | [day13.rs](aoc2023/src/day13.rs) |
 |  14   | [Parabolic Reflector ...](https://adventofcode.com/2023/day/14) | [day14.rs](aoc2023/src/day14.rs) |
+|  15   | [Lens Library](https://adventofcode.com/2023/day/15)            | [day15.rs](aoc2023/src/day15.rs) |
 
 </td><td>
 
@@ -52,6 +53,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 276.1 µs  | 477.4 µs |
 | 58.49 µs  | 359.9 µs |
 | 87.00 µs  | 61.28 µs |
+| 195.8 µs  | 24.98 µs |
 
 </td><td>
 
@@ -71,6 +73,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 247.1 µs  | 8.984 ms |
 | 10.10 µs  | 192.8 µs |
 | 72.12 µs  | 38.33 ms |
+| 161.4 µs  | 128.9 µs |
 
 </td></tr>
 </table>
