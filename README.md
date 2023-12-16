@@ -34,6 +34,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 |  13   | [Point of Incidence](https://adventofcode.com/2023/day/13)      | [day13.rs](aoc2023/src/day13.rs) |
 |  14   | [Parabolic Reflector ...](https://adventofcode.com/2023/day/14) | [day14.rs](aoc2023/src/day14.rs) |
 |  15   | [Lens Library](https://adventofcode.com/2023/day/15)            | [day15.rs](aoc2023/src/day15.rs) |
+|  16   | [The Floor Will Be Lava](https://adventofcode.com/2023/day/16)  | [day16.rs](aoc2023/src/day16.rs) |
 
 </td><td>
 
@@ -54,6 +55,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 58.49 µs  | 359.9 µs |
 | 87.00 µs  | 61.28 µs |
 | 195.8 µs  | 24.98 µs |
+| 33.91 µs  | 622.1 µs |
 
 </td><td>
 
@@ -74,6 +76,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 10.10 µs  | 192.8 µs |
 | 72.12 µs  | 38.33 ms |
 | 161.4 µs  | 128.9 µs |
+| 32.84 µs  | 20.16 ms |
 
 </td></tr>
 </table>
