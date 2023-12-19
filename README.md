@@ -37,6 +37,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 |  16   | [The Floor Will Be Lava](https://adventofcode.com/2023/day/16)  | [day16.rs](aoc2023/src/day16.rs) |
 |  17   | [Clumsy Crucible](https://adventofcode.com/2023/day/17)         | [day17.rs](aoc2023/src/day17.rs) |
 |  18   | [Lavaduct Lagoon](https://adventofcode.com/2023/day/18)         | [day18.rs](aoc2023/src/day18.rs) |
+|  19   | [Aplenty](https://adventofcode.com/2023/day/19)                 | [day19.rs](aoc2023/src/day19.rs) |
 
 </td><td>
 
@@ -60,6 +61,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 33.91 µs  | 622.1 µs |
 | 50.64 µs  | 78.82 ms |
 | 30.70 µs  | 1.981 µs |
+| 228.0 µs  | 31.74 µs |
 
 </td><td>
 
@@ -83,6 +85,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 32.84 µs  | 20.16 ms |
 | 29.74 µs  | 289.0 ms |
 | 43.98 µs  | 1.778 µs |
+| 213.9 µs  | 69.56 µs |
 
 </td></tr>
 </table>
