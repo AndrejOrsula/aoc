@@ -41,6 +41,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 |  20   | [Pulse Propagation](https://adventofcode.com/2023/day/20)       | [day20.rs](aoc2023/src/day20.rs) |
 |  21   | [Step Counter](https://adventofcode.com/2023/day/21)            | [day21.rs](aoc2023/src/day21.rs) |
 |  22   | [Sand Slabs](https://adventofcode.com/2023/day/22)              | [day22.rs](aoc2023/src/day22.rs) |
+|  23   | [A Long Walk](https://adventofcode.com/2023/day/23)             | [day23.rs](aoc2023/src/day23.rs) |
 
 </td><td>
 
@@ -68,6 +69,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 33.73 µs  | 4.654 ms |
 | 498.8 µs  | 6.057 ms |
 | 254.8 µs  | 41.48 ms |
+| 101.8 µs  | 2.554 ms |
 
 </td><td>
 
@@ -95,6 +97,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 32.87 µs  | 21.57 ms |
 | 491.3 µs  | 86.90 ms |
 | 252.4 µs  | 61.18 ms |
+| 101.2 µs  | 2.5839 s |
 
 </td></tr>
 </table>
