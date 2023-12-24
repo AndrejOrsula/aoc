@@ -24,6 +24,12 @@ rayon = { version = "1.8" }
 rustc-hash = { version = "1.1" }
 smallvec = { version = "1.11" }
 strum = { version = "0.25", features = ["derive"] }
+z3 = { version = "0.12", optional = true }
+
+[features]
+default = []
+# Only day 24 (part 2) is solved using Z3, so it is optional
+z3 = ["dep:z3"]
 
 [lib]
 bench = false
