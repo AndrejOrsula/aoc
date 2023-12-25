@@ -60,46 +60,84 @@ fn part1(input: &utils::Almanac) -> u64 {
 
 #[aoc(day5, part2)]
 fn part2(input: &utils::Almanac) -> u64 {
-    use rayon::prelude::*;
-
     let utils::Almanac { seeds, mappings } = input;
     seeds
-        .par_chunks(2)
-        .map(|chunk| {
-            let (seed_range_start, seed_range_end) = (chunk[0], chunk[0] + chunk[1]);
-            seed_range_start..seed_range_end
+        .chunks(2)
+        .map(|nums| nums[0]..(nums[0] + nums[1]))
+        .flat_map(|seed_range| {
+            mappings.iter().fold(
+                smallvec::SmallVec::<[_; 32]>::from_elem(seed_range, 1),
+                |seed_ranges, mappings| {
+                    let mut mapped_ranges = smallvec::SmallVec::new();
+                    let leftover_ranges =
+                        mappings.iter().fold(seed_ranges, |seed_ranges, mapping| {
+                            seed_ranges
+                                .into_iter()
+                                .flat_map(|seed_range| {
+                                    if seed_range.start >= mapping.from.end
+                                        || seed_range.end <= mapping.from.start
+                                    {
+                                        [seed_range, std::ops::Range::default()]
+                                    } else if seed_range.start <= mapping.from.start
+                                        && seed_range.end >= mapping.from.end
+                                    {
+                                        let mapped = mapping.to_start
+                                            ..mapping.to_start + mapping.from.end
+                                                - mapping.from.start;
+                                        if mapped.start < mapped.end {
+                                            mapped_ranges.push(mapped);
+                                        }
+
+                                        [
+                                            seed_range.start..mapping.from.start,
+                                            mapping.from.end..seed_range.end,
+                                        ]
+                                    } else if seed_range.start >= mapping.from.start
+                                        && seed_range.end <= mapping.from.end
+                                    {
+                                        let mapped = seed_range.start - mapping.from.start
+                                            + mapping.to_start
+                                            ..seed_range.end - mapping.from.start
+                                                + mapping.to_start;
+                                        if mapped.start < mapped.end {
+                                            mapped_ranges.push(mapped);
+                                        }
+
+                                        [std::ops::Range::default(), std::ops::Range::default()]
+                                    } else {
+                                        let mapped = seed_range.start.max(mapping.from.start)
+                                            - mapping.from.start
+                                            + mapping.to_start
+                                            ..seed_range.end.min(mapping.from.end)
+                                                - mapping.from.start
+                                                + mapping.to_start;
+                                        if mapped.start < mapped.end {
+                                            mapped_ranges.push(mapped);
+                                        }
+
+                                        let leftover_start =
+                                            if seed_range.start < mapping.from.start {
+                                                seed_range.start
+                                            } else {
+                                                mapping.from.end
+                                            };
+                                        let leftover_end = if seed_range.end > mapping.from.end {
+                                            seed_range.end
+                                        } else {
+                                            mapping.from.start
+                                        };
+                                        [leftover_start..leftover_end, std::ops::Range::default()]
+                                    }
+                                })
+                                .filter(|range| range.start < range.end)
+                                .collect()
+                        });
+                    mapped_ranges.extend(leftover_ranges);
+                    mapped_ranges
+                },
+            )
         })
-        .map(|seed_range| {
-            let mut cached_index =
-                smallvec::SmallVec::<[usize; 7]>::from_elem(usize::MAX, mappings.len());
-            let mut cached_diff = smallvec::SmallVec::<[i64; 7]>::from_elem(0, mappings.len());
-            seed_range
-                .map(|seed| {
-                    mappings
-                        .iter()
-                        .enumerate()
-                        .fold(seed, |value, (i, mapping)| {
-                            if cached_index[i] != usize::MAX
-                                && mapping[cached_index[i]].from.contains(&value)
-                            {
-                                value.wrapping_add_signed(cached_diff[i])
-                            } else {
-                                mapping
-                                    .iter()
-                                    .enumerate()
-                                    .find(|(_, range_map)| range_map.from.contains(&value))
-                                    .map_or(value, |(j, range_map)| {
-                                        cached_index[i] = j;
-                                        cached_diff[i] = i64::try_from(range_map.to_start).unwrap()
-                                            - i64::try_from(range_map.from.start).unwrap();
-                                        value.wrapping_add_signed(cached_diff[i])
-                                    })
-                            }
-                        })
-                })
-                .min()
-                .unwrap()
-        })
+        .map(|range| range.start)
         .min()
         .unwrap()
 }
