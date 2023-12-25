@@ -9,7 +9,7 @@ fn parse(input: &str) -> utils::Cave {
     );
     input.lines().enumerate().for_each(|(y, line)| {
         line.chars().enumerate().for_each(|(x, c)| {
-            matrix[(x, y)] = c.try_into().unwrap();
+            matrix[(x, y)] = c.into();
         });
     });
     utils::Cave::new(matrix)
