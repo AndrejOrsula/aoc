@@ -112,8 +112,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 
 ## Instructions
 
-<details open>
-<summary><h3><a href="#-rust"><img src="https://rustacean.net/assets/rustacean-flat-noshadow.svg" width="16" height="16"></a> Rust</h3></summary>
+### <a href="#-rust"><img src="https://rustacean.net/assets/rustacean-flat-noshadow.svg" width="16" height="16"></a> Rust
 
 #### <a href="#-test-the-correctness-of-solutions"><img src="https://www.svgrepo.com/show/271355/rocket-ship-rocket.svg" width="14" height="14"></a> Get Answers and Run Performance Benchmarks
 
@@ -130,57 +129,6 @@ All days also include tests using sample inputs from the puzzle descriptions.
 ```bash
 cargo test
 ```
-
-</details>
-
-<details>
-<summary><h3><a href="#-docker"><img src="https://www.svgrepo.com/show/448221/docker.svg" width="16" height="16"></a> Docker</h3></summary>
-
-> To install [Docker](https://docs.docker.com/get-docker) on your system, you can run [`.docker/host/install_docker.bash`](.docker/host/install_docker.bash) to configure Docker with NVIDIA GPU support.
->
-> ```bash
-> .docker/host/install_docker.bash
-> ```
-
-#### Build Image
-
-To build a new Docker image from [`Dockerfile`](Dockerfile), you can run [`.docker/build.bash`](.docker/build.bash) as shown below.
-
-```bash
-.docker/build.bash ${TAG:-latest} ${BUILD_ARGS}
-```
-
-#### Run Container
-
-To run the Docker container, you can use [`.docker/run.bash`](.docker/run.bash) as shown below.
-
-```bash
-.docker/run.bash ${TAG:-latest} ${CMD}
-```
-
-#### Run Dev Container
-
-To run the Docker container in a development mode (source code mounted as a volume), you can use [`.docker/dev.bash`](.docker/dev.bash) as shown below.
-
-```bash
-.docker/dev.bash ${TAG:-latest} ${CMD}
-```
-
-As an alternative, VS Code users familiar with [Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers) can modify the included [`.devcontainer/devcontainer.json`](.devcontainer/devcontainer.json) to their needs. For convenience, [`.devcontainer/open.bash`](.devcontainer/open.bash) script is available to open this repository as a Dev Container in VS Code.
-
-```bash
-.devcontainer/open.bash
-```
-
-#### Join Container
-
-To join a running Docker container from another terminal, you can use [`.docker/join.bash`](.docker/join.bash) as shown below.
-
-```bash
-.docker/join.bash ${CMD:-bash}
-```
-
-</details>
 
 ## License
 
