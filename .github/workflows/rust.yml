@@ -14,16 +14,30 @@ concurrency:
   cancel-in-progress: true
 
 env:
+  MSRV: "1.74"
   CARGO_TERM_COLOR: always
 
 jobs:
+  rustfmt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+
+      ## cargo fmt
+      - name: cargo fmt
+        run: cargo fmt --all --check --verbose
+
   cargo:
+    needs: rustfmt
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         toolchain:
-          - "1.74" # Minimal supported Rust version (MSRV)
+          - MSRV
           - stable
           - beta
     steps:
@@ -32,13 +46,18 @@ jobs:
         with:
           save-if: ${{ github.event_name == 'push'}}
       - uses: dtolnay/rust-toolchain@master
+        if: ${{ matrix.toolchain != 'MSRV' && matrix.toolchain != 'stable' }}
         with:
           toolchain: ${{ matrix.toolchain }}
-          components: rustfmt, clippy
-
-      ## cargo fmt
-      - name: cargo fmt
-        run: cargo fmt --all --check --verbose
+      - uses: dtolnay/rust-toolchain@master
+        if: ${{ matrix.toolchain == 'MSRV' }}
+        with:
+          toolchain: ${{ env.MSRV }}
+      - uses: dtolnay/rust-toolchain@master
+        if: ${{ matrix.toolchain == 'stable' }}
+        with:
+          toolchain: ${{ matrix.toolchain }}
+          components: clippy
 
       ## cargo check
       - name: cargo check
@@ -48,12 +67,8 @@ jobs:
       - name: cargo check --all-features
         run: cargo check --workspace --all-targets --all-features --verbose
 
-      ## cargo clippy
-      - name: cargo clippy
-        run: cargo clippy --workspace --all-targets --all-features --no-deps --verbose -- --deny warnings
-
       ## cargo test
-      - name: cargo test (default features)
+      - name: cargo test
         run: cargo test --workspace --all-targets --verbose
       - name: cargo test --no-default-features
         run: cargo test --workspace --all-targets --no-default-features --verbose
@@ -61,15 +76,36 @@ jobs:
         run: cargo test --workspace --all-targets --all-features --verbose
 
       ## cargo test --doc
-      - name: cargo test --doc (default features)
+      - name: cargo test --doc
         run: cargo test --workspace --doc --verbose
       - name: cargo test --doc --no-default-features
         run: cargo test --workspace --doc --no-default-features --verbose
       - name: cargo test --doc --all-features
         run: cargo test --workspace --doc --all-features --verbose
 
-      ## cargo doc
-      - name: cargo doc
-        run: cargo doc --workspace --all-features --no-deps --verbose
-      - name: doc --document-private-items
+      ## [stable] cargo clippy
+      - name: stable | cargo clippy
+        if: ${{ matrix.toolchain == 'stable' }}
+        run: cargo clippy --workspace --all-targets --all-features --no-deps --verbose -- --deny warnings
+
+      ## [stable] cargo doc
+      - name: stable | cargo doc --document-private-items
+        if: ${{ matrix.toolchain == 'stable' }}
         run: cargo doc --workspace --all-features --no-deps --document-private-items --verbose
+
+      ## [stable] Code coverage
+      - name: stable | Install cargo llvm-cov for code coverage
+        uses: taiki-e/install-action@cargo-llvm-cov
+        if: ${{ matrix.toolchain == 'stable' }}
+      ## [stable] Generate coverage with cargo llvm-cov
+      - name: stable | Generate coverage
+        if: ${{ matrix.toolchain == 'stable' }}
+        run: cargo llvm-cov --workspace --all-features --lcov --output-path lcov.info
+      ## [stable] Upload coverage to codecov.io
+      - name: stable | Upload coverage
+        if: ${{ matrix.toolchain == 'stable' }}
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: lcov.info
+          fail_ci_if_error: false
