@@ -1,8 +1,10 @@
 # Advent of Code
 
 <p align="left">
-  <a href="https://github.com/AndrejOrsula/aoc/actions/workflows/rust.yml">   <img alt="Rust"   src="https://github.com/AndrejOrsula/aoc/actions/workflows/rust.yml/badge.svg"></a>
-  <a href="https://github.com/AndrejOrsula/aoc/actions/workflows/docker.yml"> <img alt="Docker" src="https://github.com/AndrejOrsula/aoc/actions/workflows/docker.yml/badge.svg"></a>
+  <a href="https://github.com/AndrejOrsula/aoc/actions/workflows/rust.yml">   <img alt="Rust"       src="https://github.com/AndrejOrsula/aoc/actions/workflows/rust.yml/badge.svg"></a>
+  <a href="https://github.com/AndrejOrsula/aoc/actions/workflows/docker.yml"> <img alt="Docker"     src="https://github.com/AndrejOrsula/aoc/actions/workflows/docker.yml/badge.svg"></a>
+  <a href="https://deps.rs/repo/github/AndrejOrsula/aoc">                     <img alt="deps.rs"    src="https://deps.rs/repo/github/AndrejOrsula/aoc/status.svg"></a>
+  <a href="https://codecov.io/gh/AndrejOrsula/aoc">                           <img alt="codecov.io" src="https://codecov.io/gh/AndrejOrsula/aoc/branch/main/graph/badge.svg"></a>
 </p>
 
 My solutions to [Advent of Code](https://adventofcode.com) puzzles.
