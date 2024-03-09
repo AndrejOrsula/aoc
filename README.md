@@ -36,7 +36,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 |  13   | [Point of Incidence](https://adventofcode.com/2023/day/13)      | [day13.rs](aoc2023/src/day13.rs) |
 |  14   | [Parabolic Reflector ...](https://adventofcode.com/2023/day/14) | [day14.rs](aoc2023/src/day14.rs) |
 |  15   | [Lens Library](https://adventofcode.com/2023/day/15)            | [day15.rs](aoc2023/src/day15.rs) |
-|  16   | [The Floor Will Be Lava](https://adventofcode.com/2023/day/16)  | [day16.rs](aoc2023/src/day16.rs) |
+|  16   | [The Floor Will Be ...](https://adventofcode.com/2023/day/16)   | [day16.rs](aoc2023/src/day16.rs) |
 |  17   | [Clumsy Crucible](https://adventofcode.com/2023/day/17)         | [day17.rs](aoc2023/src/day17.rs) |
 |  18   | [Lavaduct Lagoon](https://adventofcode.com/2023/day/18)         | [day18.rs](aoc2023/src/day18.rs) |
 |  19   | [Aplenty](https://adventofcode.com/2023/day/19)                 | [day19.rs](aoc2023/src/day19.rs) |
@@ -44,7 +44,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 |  21   | [Step Counter](https://adventofcode.com/2023/day/21)            | [day21.rs](aoc2023/src/day21.rs) |
 |  22   | [Sand Slabs](https://adventofcode.com/2023/day/22)              | [day22.rs](aoc2023/src/day22.rs) |
 |  23   | [A Long Walk](https://adventofcode.com/2023/day/23)             | [day23.rs](aoc2023/src/day23.rs) |
-|  24   | [Never Tell Me The Odds](https://adventofcode.com/2023/day/24)  | [day24.rs](aoc2023/src/day24.rs) |
+|  24   | [Never Tell Me The ...](https://adventofcode.com/2023/day/24)   | [day24.rs](aoc2023/src/day24.rs) |
 |  25   | [Snowverload](https://adventofcode.com/2023/day/25)             | [day25.rs](aoc2023/src/day25.rs) |
 
 </td><td>
