@@ -23,7 +23,7 @@ pathfinding = { version = "4.4" }
 petgraph = { version = "0.6" }
 rayon = { version = "1.8" }
 rustc-hash = { version = "2.0" }
-rustworkx-core = { version = "0.14" }
+rustworkx-core = { version = "0.15" }
 smallvec = { version = "1.11" }
 strum = { version = "0.26", features = ["derive"] }
 z3 = { version = "0.12", optional = true }
