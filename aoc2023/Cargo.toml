@@ -15,7 +15,7 @@ aoc-runner = { workspace = true }
 aoc-runner-derive = { workspace = true }
 indoc = { workspace = true }
 
-derive_more = { version = "0.99" }
+derive_more = { version = "1.0" }
 itertools = { version = "0.12" }
 num = { version = "0.4" }
 num-integer = { version = "0.1" }
