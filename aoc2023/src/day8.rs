@@ -1,6 +1,5 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day8)]
 fn parse(input: &str) -> utils::Network {
     use itertools::Itertools;
 
@@ -35,7 +34,9 @@ fn parse(input: &str) -> utils::Network {
 }
 
 #[aoc(day8, part1)]
-fn part1(input: &utils::Network) -> u64 {
+#[must_use]
+pub fn part1(input: &str) -> u64 {
+    let input = parse(input);
     // Begin at "AAA"
     let mut current_node = "AAA";
 
@@ -58,7 +59,8 @@ fn part1(input: &utils::Network) -> u64 {
 }
 
 #[aoc(day8, part2)]
-fn part2(input: &utils::Network) -> u64 {
+pub fn part2(input: &str) -> u64 {
+    let input = parse(input);
     // Find all nodes that end with 'A'
     let mut nodes: smallvec::SmallVec<[&str; 8]> = input
         .map
@@ -117,7 +119,7 @@ mod tests {
     use indoc::indoc;
 
     #[test]
-    fn part1_example() {
+    pub fn part1_example() {
         const SAMPLE: &str = indoc! {"
             LLR
 
@@ -125,11 +127,11 @@ mod tests {
             BBB = (AAA, ZZZ)
             ZZZ = (ZZZ, ZZZ)
         "};
-        assert_eq!(part1(&parse(SAMPLE)), 6);
+        assert_eq!(part1(SAMPLE), 6);
     }
 
     #[test]
-    fn part2_example() {
+    pub fn part2_example() {
         const SAMPLE: &str = indoc! {"
             LR
 
@@ -142,6 +144,6 @@ mod tests {
             22Z = (22B, 22B)
             XXX = (XXX, XXX)
         "};
-        assert_eq!(part2(&parse(SAMPLE)), 6);
+        assert_eq!(part2(SAMPLE), 6);
     }
 }

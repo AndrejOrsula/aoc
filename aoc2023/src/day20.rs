@@ -1,6 +1,5 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day20)]
 fn parse(input: &str) -> utils::Modules {
     let mut modules: rustc_hash::FxHashMap<String, utils::Module> = input
         .lines()
@@ -48,8 +47,9 @@ fn parse(input: &str) -> utils::Modules {
 }
 
 #[aoc(day20, part1)]
-fn part1(input: &utils::Modules) -> usize {
-    let mut input = input.clone();
+#[must_use]
+pub fn part1(input: &str) -> usize {
+    let mut input = parse(input);
 
     let (n_low, n_high) = (0..1000).fold((0, 0), |(mut acc_low, mut acc_high), _| {
         let mut active_pulses = std::collections::VecDeque::default();
@@ -80,8 +80,9 @@ fn part1(input: &utils::Modules) -> usize {
 }
 
 #[aoc(day20, part2)]
-fn part2(input: &utils::Modules) -> usize {
-    let mut input = input.clone();
+#[must_use]
+pub fn part2(input: &str) -> usize {
+    let mut input = parse(input);
 
     // Find all modules that branch into a conjunction that is connected to the final "rx" module
     let mut final_module_sources = vec!["rx".to_string()];
@@ -260,12 +261,12 @@ mod tests {
     ];
 
     #[test]
-    fn part1_example() {
-        assert_eq!(part1(&parse(SAMPLES[0])), 32_000_000);
-        assert_eq!(part1(&parse(SAMPLES[1])), 11_687_500);
+    pub fn part1_example() {
+        assert_eq!(part1(SAMPLES[0]), 32_000_000);
+        assert_eq!(part1(SAMPLES[1]), 11_687_500);
     }
 
     #[test]
     #[ignore]
-    fn part2_example() {}
+    pub fn part2_example() {}
 }

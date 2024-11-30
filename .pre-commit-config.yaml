@@ -26,21 +26,16 @@ repos:
       - id: beautysh
 
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.6
+    rev: v2.3.0
     hooks:
       - id: codespell
         args: ["--ignore-words-list", "crate"]
         exclude: Cargo.lock|input/.*|aoc2023/.*/day15.rs
 
   - repo: https://github.com/hadolint/hadolint
-    rev: v2.12.1-beta
+    rev: v2.13.1-beta
     hooks:
       - id: hadolint-docker
-
-  - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.17
-    hooks:
-      - id: mdformat
 
   - repo: https://github.com/AndrejOrsula/pre-commit-cargo
     rev: 0.3.0

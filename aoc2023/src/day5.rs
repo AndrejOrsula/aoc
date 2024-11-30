@@ -1,6 +1,5 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day5)]
 fn parse(input: &str) -> utils::Almanac {
     use itertools::Itertools;
 
@@ -40,7 +39,9 @@ fn parse(input: &str) -> utils::Almanac {
 }
 
 #[aoc(day5, part1)]
-fn part1(input: &utils::Almanac) -> u64 {
+#[must_use]
+pub fn part1(input: &str) -> u64 {
+    let input = parse(input);
     let utils::Almanac { seeds, mappings } = input;
     seeds
         .iter()
@@ -59,7 +60,9 @@ fn part1(input: &utils::Almanac) -> u64 {
 }
 
 #[aoc(day5, part2)]
-fn part2(input: &utils::Almanac) -> u64 {
+#[must_use]
+pub fn part2(input: &str) -> u64 {
+    let input = parse(input);
     let utils::Almanac { seeds, mappings } = input;
     seeds
         .chunks(2)
@@ -196,12 +199,12 @@ mod tests {
     "};
 
     #[test]
-    fn part1_example() {
-        assert_eq!(part1(&parse(SAMPLE)), 35);
+    pub fn part1_example() {
+        assert_eq!(part1(SAMPLE), 35);
     }
 
     #[test]
-    fn part2_example() {
-        assert_eq!(part2(&parse(SAMPLE)), 46);
+    pub fn part2_example() {
+        assert_eq!(part2(SAMPLE), 46);
     }
 }

@@ -1,6 +1,5 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day2)]
 fn parse(input: &str) -> Vec<utils::Game> {
     use std::str::FromStr;
 
@@ -39,11 +38,13 @@ fn parse(input: &str) -> Vec<utils::Game> {
 }
 
 #[aoc(day2, part1)]
-fn part1(input: &[utils::Game]) -> u32 {
+#[must_use]
+pub fn part1(input: &str) -> u32 {
     const MAX_N_RED: u8 = 12;
     const MAX_N_GREEN: u8 = 13;
     const MAX_N_BLUE: u8 = 14;
 
+    let input = parse(input);
     input
         .iter()
         .filter_map(|game| {
@@ -65,7 +66,9 @@ fn part1(input: &[utils::Game]) -> u32 {
 }
 
 #[aoc(day2, part2)]
-fn part2(input: &[utils::Game]) -> u32 {
+#[must_use]
+pub fn part2(input: &str) -> u32 {
+    let input = parse(input);
     input
         .iter()
         .map(|game| {
@@ -92,6 +95,7 @@ mod utils {
     }
 
     #[derive(Default)]
+    #[allow(clippy::struct_field_names)]
     pub struct CubeSet {
         pub n_red: u8,
         pub n_green: u8,
@@ -141,12 +145,12 @@ mod tests {
     "};
 
     #[test]
-    fn part1_example() {
-        assert_eq!(part1(&parse(SAMPLE)), 8);
+    pub fn part1_example() {
+        assert_eq!(part1(SAMPLE), 8);
     }
 
     #[test]
-    fn part2_example() {
-        assert_eq!(part2(&parse(SAMPLE)), 2286);
+    pub fn part2_example() {
+        assert_eq!(part2(SAMPLE), 2286);
     }
 }

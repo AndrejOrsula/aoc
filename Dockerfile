@@ -1,4 +1,4 @@
-ARG RUST_VERSION=1.74
+ARG RUST_VERSION=latest
 FROM rust:${RUST_VERSION}
 
 ### Use bash as the default shell

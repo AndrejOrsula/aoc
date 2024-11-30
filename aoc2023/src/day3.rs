@@ -1,12 +1,7 @@
-use aoc_runner_derive::{aoc, aoc_generator};
-
-#[aoc_generator(day3)]
-fn parse(input: &str) -> String {
-    input.to_owned()
-}
+use aoc_runner_derive::aoc;
 
 #[aoc(day3, part1)]
-fn part1(input: &str) -> u32 {
+pub fn part1(input: &str) -> u32 {
     // Sum of all numbers that are surrounded by symbols
     let mut sum = 0;
 
@@ -79,7 +74,7 @@ fn part1(input: &str) -> u32 {
 }
 
 #[aoc(day3, part2)]
-fn part2(input: &str) -> u32 {
+pub fn part2(input: &str) -> u32 {
     // Sum of all products between two numbers that are connected by a gear ('*')
     let mut sum = 0;
 
@@ -225,12 +220,12 @@ mod tests {
     "};
 
     #[test]
-    fn part1_example() {
-        assert_eq!(part1(&parse(SAMPLE)), 4361);
+    pub fn part1_example() {
+        assert_eq!(part1(SAMPLE), 4361);
     }
 
     #[test]
-    fn part2_example() {
-        assert_eq!(part2(&parse(SAMPLE)), 467_835);
+    pub fn part2_example() {
+        assert_eq!(part2(SAMPLE), 467_835);
     }
 }

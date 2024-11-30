@@ -1,6 +1,5 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day10)]
 fn parse(input: &str) -> utils::Map {
     let mut grid = pathfinding::matrix::Matrix::new(
         input.lines().count(),
@@ -25,13 +24,17 @@ fn parse(input: &str) -> utils::Map {
 }
 
 #[aoc(day10, part1)]
-fn part1(input: &utils::Map) -> usize {
+#[must_use]
+pub fn part1(input: &str) -> usize {
+    let input = parse(input);
     // The furthest point from the start is always the middle of the loop
     input.get_loop().len() / 2
 }
 
 #[aoc(day10, part2)]
-fn part2(input: &utils::Map) -> usize {
+#[must_use]
+pub fn part2(input: &str) -> usize {
+    let input = parse(input);
     // Construct a grid that only contains the loop
     let mut enclosure =
         pathfinding::matrix::Matrix::new(input.grid.rows, input.grid.columns, utils::Tile::Ground);
@@ -174,7 +177,7 @@ mod tests {
     use indoc::indoc;
 
     #[test]
-    fn part1_example() {
+    pub fn part1_example() {
         const SAMPLES: [&str; 2] = [
             indoc! {"
                 .....
@@ -192,12 +195,12 @@ mod tests {
             "},
         ];
 
-        assert_eq!(part1(&parse(SAMPLES[0])), 4);
-        assert_eq!(part1(&parse(SAMPLES[1])), 8);
+        assert_eq!(part1(SAMPLES[0]), 4);
+        assert_eq!(part1(SAMPLES[1]), 8);
     }
 
     #[test]
-    fn part2_example() {
+    pub fn part2_example() {
         const SAMPLES: [&str; 3] = [
             indoc! {"
                 ...........
@@ -236,8 +239,8 @@ mod tests {
             "},
         ];
 
-        assert_eq!(part2(&parse(SAMPLES[0])), 4);
-        assert_eq!(part2(&parse(SAMPLES[1])), 8);
-        assert_eq!(part2(&parse(SAMPLES[2])), 10);
+        assert_eq!(part2(SAMPLES[0]), 4);
+        assert_eq!(part2(SAMPLES[1]), 8);
+        assert_eq!(part2(SAMPLES[2]), 10);
     }
 }

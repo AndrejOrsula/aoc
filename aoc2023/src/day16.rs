@@ -1,6 +1,5 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day16)]
 fn parse(input: &str) -> utils::Cave {
     let mut matrix = pathfinding::matrix::Matrix::new(
         input.lines().count(),
@@ -16,15 +15,19 @@ fn parse(input: &str) -> utils::Cave {
 }
 
 #[aoc(day16, part1)]
-fn part1(input: &utils::Cave) -> usize {
+#[must_use]
+pub fn part1(input: &str) -> usize {
+    let input = parse(input);
     let beam = utils::Beam::new((0, 0), utils::Direction::East);
     input.get_energized_tiles(beam).len()
 }
 
 #[aoc(day16, part2)]
-fn part2(input: &utils::Cave) -> usize {
+#[must_use]
+pub fn part2(input: &str) -> usize {
     use rayon::prelude::*;
 
+    let input = parse(input);
     (0..input.columns)
         .map(|x| utils::Beam::new((x, 0), utils::Direction::South))
         .chain(
@@ -181,12 +184,12 @@ mod tests {
     "};
 
     #[test]
-    fn part1_example() {
-        assert_eq!(part1(&parse(SAMPLE)), 46);
+    pub fn part1_example() {
+        assert_eq!(part1(SAMPLE), 46);
     }
 
     #[test]
-    fn part2_example() {
-        assert_eq!(part2(&parse(SAMPLE)), 51);
+    pub fn part2_example() {
+        assert_eq!(part2(SAMPLE), 51);
     }
 }

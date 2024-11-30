@@ -1,6 +1,5 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day6)]
 fn parse(input: &str) -> smallvec::SmallVec<[utils::RaceData; 4]> {
     use itertools::Itertools;
 
@@ -20,13 +19,16 @@ fn parse(input: &str) -> smallvec::SmallVec<[utils::RaceData; 4]> {
 }
 
 #[aoc(day6, part1)]
-fn part1(input: &[utils::RaceData]) -> u64 {
+pub fn part1(input: &str) -> u64 {
+    let input = parse(input);
     input.iter().map(utils::RaceData::n_record_breaks).product()
 }
 
 #[aoc(day6, part2)]
-fn part2(input: &[utils::RaceData]) -> u64 {
-    utils::RaceData::merge(input).n_record_breaks1()
+#[must_use]
+pub fn part2(input: &str) -> u64 {
+    let input = parse(input);
+    utils::RaceData::merge(&input).n_record_breaks1()
 }
 
 mod utils {
@@ -77,12 +79,12 @@ mod tests {
     "};
 
     #[test]
-    fn part1_example() {
-        assert_eq!(part1(&parse(SAMPLE)), 288);
+    pub fn part1_example() {
+        assert_eq!(part1(SAMPLE), 288);
     }
 
     #[test]
-    fn part2_example() {
-        assert_eq!(part2(&parse(SAMPLE)), 71503);
+    pub fn part2_example() {
+        assert_eq!(part2(SAMPLE), 71503);
     }
 }

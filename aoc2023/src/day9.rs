@@ -1,6 +1,5 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day9)]
 fn parse(input: &str) -> Vec<Vec<i32>> {
     input
         .lines()
@@ -13,7 +12,9 @@ fn parse(input: &str) -> Vec<Vec<i32>> {
 }
 
 #[aoc(day9, part1)]
-fn part1(input: &[Vec<i32>]) -> i32 {
+#[must_use]
+pub fn part1(input: &str) -> i32 {
+    let input = parse(input);
     input
         .iter()
         .map(|seq| utils::predict_next_recursively(seq))
@@ -21,12 +22,14 @@ fn part1(input: &[Vec<i32>]) -> i32 {
 }
 
 #[aoc(day9, part2)]
-fn part2(input: &[Vec<i32>]) -> i32 {
+#[must_use]
+pub fn part2(input: &str) -> i32 {
+    let input = parse(input);
     input
-        .to_owned()
+        .clone()
         .iter_mut()
         .map(|arr| {
-            arr.reverse();
+            (*arr).reverse();
             arr
         })
         .map(|seq| utils::predict_next_recursively(seq))
@@ -58,12 +61,12 @@ mod tests {
     "};
 
     #[test]
-    fn part1_example() {
-        assert_eq!(part1(&parse(SAMPLE)), 114);
+    pub fn part1_example() {
+        assert_eq!(part1(SAMPLE), 114);
     }
 
     #[test]
-    fn part2_example() {
-        assert_eq!(part2(&parse(SAMPLE)), 2);
+    pub fn part2_example() {
+        assert_eq!(part2(SAMPLE), 2);
     }
 }

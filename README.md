@@ -11,7 +11,7 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 
 ## Edition
 
-### [Advent of Code 2023](https://adventofcode.com/2023)
+<details><summary><h3><a href="https://adventofcode.com/2023">Advent of Code 2023</a></h3></summary>
 
 > All benchmarks are run on a *Dell Precision 5550* laptop with an *Intel Core i7-10875H* CPU.
 
@@ -105,10 +105,11 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 | 252.4 µs  | 61.18 ms |
 | 101.2 µs  | 2.5839 s |
 | 79.73 µs  | 2.4001 s |
-| 0.000 µs  | 0.000 µs |
+|     —     |    —     |
 
 </td></tr>
 </table>
+</details>
 
 ## Instructions
 

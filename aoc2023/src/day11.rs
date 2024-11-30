@@ -1,23 +1,25 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day11, part1)]
 fn parse1(input: &str) -> Vec<(usize, usize)> {
     utils::parse_expanded_galaxies(input, 1)
 }
 
-#[aoc_generator(day11, part2)]
 fn parse2(input: &str) -> Vec<(usize, usize)> {
     utils::parse_expanded_galaxies(input, 999_999)
 }
 
 #[aoc(day11, part1)]
-fn part1(input: &[(usize, usize)]) -> usize {
-    utils::sum_galactic_distances(input)
+#[must_use]
+pub fn part1(input: &str) -> usize {
+    let input = parse1(input);
+    utils::sum_galactic_distances(&input)
 }
 
 #[aoc(day11, part2)]
-fn part2(input: &[(usize, usize)]) -> usize {
-    utils::sum_galactic_distances(input)
+#[must_use]
+pub fn part2(input: &str) -> usize {
+    let input = parse2(input);
+    utils::sum_galactic_distances(&input)
 }
 
 mod utils {
@@ -133,13 +135,19 @@ mod tests {
     "};
 
     #[test]
-    fn part1_example() {
-        assert_eq!(part1(&parse1(SAMPLE)), 374);
+    pub fn part1_example() {
+        assert_eq!(part1(SAMPLE), 374);
     }
 
     #[test]
-    fn part2_example() {
-        assert_eq!(part2(&utils::parse_expanded_galaxies(SAMPLE, 9)), 1030);
-        assert_eq!(part2(&utils::parse_expanded_galaxies(SAMPLE, 99)), 8410);
+    pub fn part2_example() {
+        assert_eq!(
+            utils::sum_galactic_distances(&utils::parse_expanded_galaxies(SAMPLE, 9)),
+            1030
+        );
+        assert_eq!(
+            utils::sum_galactic_distances(&utils::parse_expanded_galaxies(SAMPLE, 99)),
+            8410
+        );
     }
 }

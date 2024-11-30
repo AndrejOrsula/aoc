@@ -2,21 +2,22 @@
 name = "aoc2023"
 description = "Advent of Code 2023"
 edition = "2021"
-rust-version = "1.74"
+rust-version = "1.75"
 version = "0.1.0"
 authors.workspace = true
 keywords.workspace = true
 license.workspace = true
 readme.workspace = true
 repository.workspace = true
+publish = false
 
 [dependencies]
 aoc-runner = { workspace = true }
 aoc-runner-derive = { workspace = true }
 indoc = { workspace = true }
 
-derive_more = { version = "0.99" }
-itertools = { version = "0.12" }
+derive_more = { version = "1", features = ["full"] }
+itertools = { version = "0.13" }
 num = { version = "0.4" }
 num-integer = { version = "0.1" }
 pathfinding = { version = "4.4" }

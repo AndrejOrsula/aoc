@@ -1,6 +1,5 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day24)]
 fn parse(input: &str) -> utils::Hail {
     use itertools::Itertools;
     input
@@ -24,7 +23,9 @@ fn parse(input: &str) -> utils::Hail {
 }
 
 #[aoc(day24, part1)]
-fn part1(input: &utils::Hail) -> usize {
+#[must_use]
+pub fn part1(input: &str) -> usize {
+    let input = parse(input);
     input.count_intersections((200_000_000_000_000, 400_000_000_000_000))
 }
 
@@ -34,8 +35,11 @@ fn part1(input: &utils::Hail) -> usize {
 #[aoc(day24, part2)]
 #[allow(clippy::similar_names)]
 #[cfg(feature = "z3")]
-fn part2(input: &utils::Hail) -> u64 {
+#[must_use]
+pub fn part2(input: &str) -> u64 {
     use z3::ast::Ast;
+
+    let input = parse(input);
 
     let context = z3::Context::new(&z3::Config::default());
     let solver = z3::Solver::new(&context);
@@ -158,13 +162,13 @@ mod tests {
     "};
 
     #[test]
-    fn part1_example() {
+    pub fn part1_example() {
         assert_eq!(parse(SAMPLE).count_intersections((7, 27)), 2);
     }
 
     #[test]
     #[cfg(feature = "z3")]
-    fn part2_example() {
-        assert_eq!(part2(&parse(SAMPLE)), 47);
+    pub fn part2_example() {
+        assert_eq!(part2(SAMPLE), 47);
     }
 }

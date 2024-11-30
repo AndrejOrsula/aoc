@@ -1,12 +1,8 @@
-use aoc_runner_derive::{aoc, aoc_generator};
-
-#[aoc_generator(day1)]
-fn parse(input: &str) -> String {
-    input.to_owned()
-}
+use aoc_runner_derive::aoc;
 
 #[aoc(day1, part1)]
-fn part1(input: &str) -> u32 {
+#[must_use]
+pub fn part1(input: &str) -> u32 {
     input
         .lines()
         .map(|line| {
@@ -20,7 +16,8 @@ fn part1(input: &str) -> u32 {
 }
 
 #[aoc(day1, part2)]
-fn part2(input: &str) -> u32 {
+#[must_use]
+pub fn part2(input: &str) -> u32 {
     input
         .lines()
         .map(|line| {
@@ -149,18 +146,18 @@ mod tests {
     use indoc::indoc;
 
     #[test]
-    fn part1_example() {
+    pub fn part1_example() {
         const SAMPLE: &str = indoc! {"
             1abc2
             pqr3stu8vwx
             a1b2c3d4e5f
             treb7uchet
         "};
-        assert_eq!(part1(&parse(SAMPLE)), 142);
+        assert_eq!(part1(SAMPLE), 142);
     }
 
     #[test]
-    fn part2_example() {
+    pub fn part2_example() {
         const SAMPLE: &str = indoc! {"
             two1nine
             eightwothree
@@ -170,6 +167,6 @@ mod tests {
             zoneight234
             7pqrstsixteen
         "};
-        assert_eq!(part2(&parse(SAMPLE)), 281);
+        assert_eq!(part2(SAMPLE), 281);
     }
 }

@@ -1,6 +1,5 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day19)]
 fn parse(input: &str) -> utils::SortingSystem {
     let (workflows, part_ratings) = input.split_once("\n\n").unwrap();
 
@@ -61,12 +60,16 @@ fn parse(input: &str) -> utils::SortingSystem {
 }
 
 #[aoc(day19, part1)]
-fn part1(input: &utils::SortingSystem) -> u64 {
-    utils::count_accepted(input, "in")
+#[must_use]
+pub fn part1(input: &str) -> u64 {
+    let input = parse(input);
+    utils::count_accepted(&input, "in")
 }
 
 #[aoc(day19, part2)]
-fn part2(input: &utils::SortingSystem) -> u64 {
+#[must_use]
+pub fn part2(input: &str) -> u64 {
+    let input = parse(input);
     use strum::IntoEnumIterator;
     utils::count_all_accepted_combinations_recursively(
         &input.workflows,
@@ -262,12 +265,12 @@ mod tests {
     "};
 
     #[test]
-    fn part1_example() {
-        assert_eq!(part1(&parse(SAMPLE)), 19114);
+    pub fn part1_example() {
+        assert_eq!(part1(SAMPLE), 19114);
     }
 
     #[test]
-    fn part2_example() {
-        assert_eq!(part2(&parse(SAMPLE)), 167_409_079_868_000);
+    pub fn part2_example() {
+        assert_eq!(part2(SAMPLE), 167_409_079_868_000);
     }
 }

@@ -1,6 +1,5 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day4)]
 fn parse(input: &str) -> Vec<utils::Card> {
     input
         .lines()
@@ -27,7 +26,9 @@ fn parse(input: &str) -> Vec<utils::Card> {
 }
 
 #[aoc(day4, part1)]
-fn part1(input: &[utils::Card]) -> u32 {
+#[must_use]
+pub fn part1(input: &str) -> u32 {
+    let input = parse(input);
     input
         .iter()
         .map(|card| match card.get_n_matches() {
@@ -38,7 +39,9 @@ fn part1(input: &[utils::Card]) -> u32 {
 }
 
 #[aoc(day4, part2)]
-fn part2(input: &[utils::Card]) -> u32 {
+#[must_use]
+pub fn part2(input: &str) -> u32 {
+    let input = parse(input);
     let mut card_count: Vec<u32> = vec![1; input.len()];
     input
         .iter()
@@ -88,12 +91,12 @@ mod tests {
     "};
 
     #[test]
-    fn part1_example() {
-        assert_eq!(part1(&parse(SAMPLE)), 13);
+    pub fn part1_example() {
+        assert_eq!(part1(SAMPLE), 13);
     }
 
     #[test]
-    fn part2_example() {
-        assert_eq!(part2(&parse(SAMPLE)), 30);
+    pub fn part2_example() {
+        assert_eq!(part2(SAMPLE), 30);
     }
 }

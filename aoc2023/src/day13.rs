@@ -1,6 +1,5 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day13)]
 fn parse(input: &str) -> Vec<utils::Pattern> {
     input
         .split("\n\n")
@@ -9,7 +8,9 @@ fn parse(input: &str) -> Vec<utils::Pattern> {
 }
 
 #[aoc(day13, part1)]
-fn part1(input: &[utils::Pattern]) -> usize {
+#[must_use]
+pub fn part1(input: &str) -> usize {
+    let input = parse(input);
     input
         .iter()
         .map(|pattern| {
@@ -19,9 +20,11 @@ fn part1(input: &[utils::Pattern]) -> usize {
 }
 
 #[aoc(day13, part2)]
-fn part2(input: &[utils::Pattern]) -> usize {
+#[must_use]
+pub fn part2(input: &str) -> usize {
     use rayon::prelude::*;
 
+    let input = parse(input);
     input
         .iter()
         .par_bridge()
@@ -99,12 +102,12 @@ mod tests {
     "};
 
     #[test]
-    fn part1_example() {
-        assert_eq!(part1(&parse(SAMPLE)), 405);
+    pub fn part1_example() {
+        assert_eq!(part1(SAMPLE), 405);
     }
 
     #[test]
-    fn part2_example() {
-        assert_eq!(part2(&parse(SAMPLE)), 400);
+    pub fn part2_example() {
+        assert_eq!(part2(SAMPLE), 400);
     }
 }

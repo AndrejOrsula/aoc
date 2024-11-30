@@ -1,6 +1,5 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day21)]
 fn parse(input: &str) -> utils::Map {
     let mut grid =
         pathfinding::grid::Grid::new(input.lines().count(), input.lines().next().unwrap().len());
@@ -25,12 +24,16 @@ fn parse(input: &str) -> utils::Map {
 }
 
 #[aoc(day21, part1)]
-fn part1(input: &utils::Map) -> usize {
+#[must_use]
+pub fn part1(input: &str) -> usize {
+    let input = parse(input);
     input.count_reachable_plots(64, false)
 }
 
 #[aoc(day21, part2)]
-fn part2(input: &utils::Map) -> usize {
+#[must_use]
+pub fn part2(input: &str) -> usize {
+    let input = parse(input);
     input.count_reachable_plots2(26_501_365)
 }
 
@@ -248,12 +251,12 @@ mod tests {
     "};
 
     #[test]
-    fn part1_example() {
+    pub fn part1_example() {
         assert_eq!(parse(SAMPLE).count_reachable_plots(6, false), 16);
     }
 
     #[test]
-    fn part2_example() {
+    pub fn part2_example() {
         assert_eq!(parse(SAMPLE).count_reachable_plots(6, true), 16);
         assert_eq!(parse(SAMPLE).count_reachable_plots(10, true), 50);
         assert_eq!(parse(SAMPLE).count_reachable_plots(50, true), 1594);

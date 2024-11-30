@@ -1,6 +1,5 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day14)]
 fn parse(input: &str) -> utils::Platform {
     let mut matrix = pathfinding::matrix::Matrix::new(
         input.lines().count(),
@@ -16,17 +15,19 @@ fn parse(input: &str) -> utils::Platform {
 }
 
 #[aoc(day14, part1)]
-fn part1(input: &utils::Platform) -> usize {
-    let mut input = input.clone();
+#[must_use]
+pub fn part1(input: &str) -> usize {
+    let mut input = parse(input);
     input.slide_rocks_north();
     input.compute_load()
 }
 
 #[aoc(day14, part2)]
-fn part2(input: &utils::Platform) -> usize {
+#[must_use]
+pub fn part2(input: &str) -> usize {
     const TARGET_N_SPINS: usize = 1_000_000_000;
 
-    let mut input = input.clone();
+    let mut input = parse(input);
     let mut visited: rustc_hash::FxHashMap<utils::Platform, usize> =
         [(input.clone(), 0)].into_iter().collect();
 
@@ -153,12 +154,12 @@ mod tests {
     "};
 
     #[test]
-    fn part1_example() {
-        assert_eq!(part1(&parse(SAMPLE)), 136);
+    pub fn part1_example() {
+        assert_eq!(part1(SAMPLE), 136);
     }
 
     #[test]
-    fn part2_example() {
-        assert_eq!(part2(&parse(SAMPLE)), 64);
+    pub fn part2_example() {
+        assert_eq!(part2(SAMPLE), 64);
     }
 }

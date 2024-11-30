@@ -1,6 +1,5 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day18, part1)]
 fn parse1(input: &str) -> Vec<(utils::Direction, u32)> {
     use itertools::Itertools;
 
@@ -16,7 +15,6 @@ fn parse1(input: &str) -> Vec<(utils::Direction, u32)> {
         .collect()
 }
 
-#[aoc_generator(day18, part2)]
 fn parse2(input: &str) -> Vec<(utils::Direction, u32)> {
     use itertools::Itertools;
 
@@ -38,13 +36,17 @@ fn parse2(input: &str) -> Vec<(utils::Direction, u32)> {
 }
 
 #[aoc(day18, part1)]
-fn part1(input: &[(utils::Direction, u32)]) -> u64 {
-    utils::compute_area(input)
+#[must_use]
+pub fn part1(input: &str) -> u64 {
+    let input = parse1(input);
+    utils::compute_area(&input)
 }
 
 #[aoc(day18, part2)]
-fn part2(input: &[(utils::Direction, u32)]) -> u64 {
-    utils::compute_area(input)
+#[must_use]
+pub fn part2(input: &str) -> u64 {
+    let input = parse2(input);
+    utils::compute_area(&input)
 }
 
 mod utils {
@@ -116,12 +118,12 @@ mod tests {
     "};
 
     #[test]
-    fn part1_example() {
-        assert_eq!(part1(&parse1(SAMPLE)), 62);
+    pub fn part1_example() {
+        assert_eq!(part1(SAMPLE), 62);
     }
 
     #[test]
-    fn part2_example() {
-        assert_eq!(part2(&parse2(SAMPLE)), 952_408_144_115);
+    pub fn part2_example() {
+        assert_eq!(part2(SAMPLE), 952_408_144_115);
     }
 }

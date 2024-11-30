@@ -1,6 +1,5 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day25)]
 fn parse(input: &str) -> petgraph::Graph<String, (), petgraph::Undirected> {
     let mut graph = petgraph::Graph::default();
     let mut nodes = std::collections::HashMap::new();
@@ -22,7 +21,9 @@ fn parse(input: &str) -> petgraph::Graph<String, (), petgraph::Undirected> {
 }
 
 #[aoc(day25, part1)]
-fn part1(input: &petgraph::Graph<String, (), petgraph::Undirected>) -> usize {
+#[must_use]
+pub fn part1(input: &str) -> usize {
+    let input = parse(input);
     let min_cut_res: Result<_, ()> =
         rustworkx_core::connectivity::stoer_wagner_min_cut(&input, |_| Ok(1));
     let (min_cut, partition) = min_cut_res.unwrap().unwrap();
@@ -39,7 +40,7 @@ mod tests {
     use indoc::indoc;
 
     #[test]
-    fn part1_example() {
+    pub fn part1_example() {
         const SAMPLE: &str = indoc! {"
             jqt: rhn xhk nvd
             rsh: frs pzl lsr
@@ -56,6 +57,6 @@ mod tests {
             frs: qnr lhk lsr
         "};
 
-        assert_eq!(part1(&parse(SAMPLE)), 54);
+        assert_eq!(part1(SAMPLE), 54);
     }
 }

@@ -1,6 +1,5 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day23)]
 fn parse(input: &str) -> utils::Map {
     let mut matrix = pathfinding::matrix::Matrix::new(
         input.lines().count(),
@@ -22,12 +21,16 @@ fn parse(input: &str) -> utils::Map {
 }
 
 #[aoc(day23, part1)]
-fn part1(input: &utils::Map) -> usize {
+#[must_use]
+pub fn part1(input: &str) -> usize {
+    let input = parse(input);
     input.longest_path_len(true)
 }
 
 #[aoc(day23, part2)]
-fn part2(input: &utils::Map) -> usize {
+#[must_use]
+pub fn part2(input: &str) -> usize {
+    let input = parse(input);
     input.longest_path_len(false)
 }
 
@@ -231,12 +234,12 @@ mod tests {
     "};
 
     #[test]
-    fn part1_example() {
-        assert_eq!(part1(&parse(SAMPLE)), 94);
+    pub fn part1_example() {
+        assert_eq!(part1(SAMPLE), 94);
     }
 
     #[test]
-    fn part2_example() {
-        assert_eq!(part2(&parse(SAMPLE)), 154);
+    pub fn part2_example() {
+        assert_eq!(part2(SAMPLE), 154);
     }
 }

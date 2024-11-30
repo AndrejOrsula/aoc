@@ -1,7 +1,6 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
 /// Parsed bricks are already settled on the ground and sorted by their Z coordinate.
-#[aoc_generator(day22)]
 fn parse(input: &str) -> utils::Brickfall {
     use itertools::Itertools;
     use std::str::FromStr;
@@ -17,14 +16,18 @@ fn parse(input: &str) -> utils::Brickfall {
 }
 
 #[aoc(day22, part1)]
-fn part1(input: &utils::Brickfall) -> usize {
+#[must_use]
+pub fn part1(input: &str) -> usize {
+    let input = parse(input);
     (0..input.len())
         .filter(|&i| input.bricks_affected_by(i).all(|x| !x))
         .count()
 }
 
 #[aoc(day22, part2)]
-fn part2(input: &utils::Brickfall) -> usize {
+#[must_use]
+pub fn part2(input: &str) -> usize {
+    let input = parse(input);
     (0..input.len())
         .map(|i| input.bricks_affected_by(i).filter(|&x| x).count())
         .sum()
@@ -155,12 +158,12 @@ mod tests {
     "};
 
     #[test]
-    fn part1_example() {
-        assert_eq!(part1(&parse(SAMPLE)), 5);
+    pub fn part1_example() {
+        assert_eq!(part1(SAMPLE), 5);
     }
 
     #[test]
-    fn part2_example() {
-        assert_eq!(part2(&parse(SAMPLE)), 7);
+    pub fn part2_example() {
+        assert_eq!(part2(SAMPLE), 7);
     }
 }

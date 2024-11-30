@@ -1,20 +1,23 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day15)]
 fn parse(input: &str) -> Vec<String> {
     input.split(',').map(|x| x.trim().to_owned()).collect()
 }
 
 #[aoc(day15, part1)]
-fn part1(input: &[String]) -> u32 {
+#[must_use]
+pub fn part1(input: &str) -> u32 {
+    let input = parse(input);
     input.iter().map(|step| u32::from(utils::hash(step))).sum()
 }
 
 #[aoc(day15, part2)]
-fn part2(input: &[String]) -> usize {
+#[must_use]
+pub fn part2(input: &str) -> usize {
+    let input = parse(input);
     let mut boxes = vec![smallvec::SmallVec::<[_; 5]>::new(); 256];
-    for step in input {
-        let (label, focal_length) = step.split_once(|c| c == '=' || c == '-').unwrap();
+    for step in &input {
+        let (label, focal_length) = step.split_once(['=', '-']).unwrap();
         let current_box = boxes.get_mut(utils::hash(label) as usize).unwrap();
         let slot_index = current_box.iter().position(|&(l, _)| l == label);
         if step.contains('=') {
@@ -63,12 +66,12 @@ mod tests {
     "};
 
     #[test]
-    fn part1_example() {
-        assert_eq!(part1(&parse(SAMPLE)), 1320);
+    pub fn part1_example() {
+        assert_eq!(part1(SAMPLE), 1320);
     }
 
     #[test]
-    fn part2_example() {
-        assert_eq!(part2(&parse(SAMPLE)), 145);
+    pub fn part2_example() {
+        assert_eq!(part2(SAMPLE), 145);
     }
 }

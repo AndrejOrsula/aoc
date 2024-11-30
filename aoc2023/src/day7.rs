@@ -1,23 +1,17 @@
-use aoc_runner_derive::{aoc, aoc_generator};
-
-#[aoc_generator(day7, part1)]
-fn parse1(input: &str) -> Vec<utils::CardHandWithBid<utils::part1::CamelCard>> {
-    utils::parse(input)
-}
-
-#[aoc_generator(day7, part2)]
-fn parse2(input: &str) -> Vec<utils::CardHandWithBid<utils::part2::CamelCard>> {
-    utils::parse(input)
-}
+use aoc_runner_derive::aoc;
 
 #[aoc(day7, part1)]
-fn part1(input: &[utils::CardHandWithBid<utils::part1::CamelCard>]) -> u64 {
-    utils::solve(input)
+#[must_use]
+pub fn part1(input: &str) -> u64 {
+    let input: Vec<utils::CardHandWithBid<utils::part1::CamelCard>> = utils::parse(input);
+    utils::solve(&input)
 }
 
 #[aoc(day7, part2)]
-fn part2(input: &[utils::CardHandWithBid<utils::part2::CamelCard>]) -> u64 {
-    utils::solve(input)
+#[must_use]
+pub fn part2(input: &str) -> u64 {
+    let input: Vec<utils::CardHandWithBid<utils::part2::CamelCard>> = utils::parse(input);
+    utils::solve(&input)
 }
 
 mod utils {
@@ -300,12 +294,12 @@ mod tests {
     "};
 
     #[test]
-    fn part1_example() {
-        assert_eq!(part1(&parse1(SAMPLE)), 6440);
+    pub fn part1_example() {
+        assert_eq!(part1(SAMPLE), 6440);
     }
 
     #[test]
-    fn part2_example() {
-        assert_eq!(part2(&parse2(SAMPLE)), 5905);
+    pub fn part2_example() {
+        assert_eq!(part2(SAMPLE), 5905);
     }
 }
