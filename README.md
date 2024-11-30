@@ -11,104 +11,73 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 
 ## Edition
 
-<details><summary><h3><a href="https://adventofcode.com/2023">Advent of Code 2023</a></h3></summary>
+<details open><summary><h3><a href="https://adventofcode.com/2024">Advent of Code 2024</a></h3></summary>
 
 > All benchmarks are run on a *Dell Precision 5550* laptop with an *Intel Core i7-10875H* CPU.
 
-<table>
-<tr><th>Day</th><th>Part 1 Performance</th><th>Part 2 Performance</th></tr>
-<tr><td>
+|   D   | Puzzle | Code  | Part 1 Performance | Part 2 Performance |
+| :---: | ------ | :---: | :----------------: | :----------------: |
 
-|   D   | Puzzle                                                          |               Code               |
-| :---: | --------------------------------------------------------------- | :------------------------------: |
-|   1   | [Trebuchet?!](https://adventofcode.com/2023/day/1)              |  [day1.rs](aoc2023/src/day1.rs)  |
-|   2   | [Cube Conundrum](https://adventofcode.com/2023/day/2)           |  [day2.rs](aoc2023/src/day2.rs)  |
-|   3   | [Gear Ratios](https://adventofcode.com/2023/day/3)              |  [day3.rs](aoc2023/src/day3.rs)  |
-|   4   | [Scratchcards](https://adventofcode.com/2023/day/4)             |  [day4.rs](aoc2023/src/day4.rs)  |
-|   5   | [If You Give A Seed ...](https://adventofcode.com/2023/day/5)   |  [day5.rs](aoc2023/src/day5.rs)  |
-|   6   | [Wait For It](https://adventofcode.com/2023/day/6)              |  [day6.rs](aoc2023/src/day6.rs)  |
-|   7   | [Camel Cards](https://adventofcode.com/2023/day/7)              |  [day7.rs](aoc2023/src/day7.rs)  |
-|   8   | [Haunted Wasteland](https://adventofcode.com/2023/day/8)        |  [day8.rs](aoc2023/src/day8.rs)  |
-|   9   | [Mirage Maintenance](https://adventofcode.com/2023/day/9)       |  [day9.rs](aoc2023/src/day9.rs)  |
-|  10   | [Pipe Maze](https://adventofcode.com/2023/day/10)               | [day10.rs](aoc2023/src/day10.rs) |
-|  11   | [Cosmic Expansion](https://adventofcode.com/2023/day/11)        | [day11.rs](aoc2023/src/day11.rs) |
-|  12   | [Hot Springs](https://adventofcode.com/2023/day/12)             | [day12.rs](aoc2023/src/day12.rs) |
-|  13   | [Point of Incidence](https://adventofcode.com/2023/day/13)      | [day13.rs](aoc2023/src/day13.rs) |
-|  14   | [Parabolic Reflector ...](https://adventofcode.com/2023/day/14) | [day14.rs](aoc2023/src/day14.rs) |
-|  15   | [Lens Library](https://adventofcode.com/2023/day/15)            | [day15.rs](aoc2023/src/day15.rs) |
-|  16   | [The Floor Will Be ...](https://adventofcode.com/2023/day/16)   | [day16.rs](aoc2023/src/day16.rs) |
-|  17   | [Clumsy Crucible](https://adventofcode.com/2023/day/17)         | [day17.rs](aoc2023/src/day17.rs) |
-|  18   | [Lavaduct Lagoon](https://adventofcode.com/2023/day/18)         | [day18.rs](aoc2023/src/day18.rs) |
-|  19   | [Aplenty](https://adventofcode.com/2023/day/19)                 | [day19.rs](aoc2023/src/day19.rs) |
-|  20   | [Pulse Propagation](https://adventofcode.com/2023/day/20)       | [day20.rs](aoc2023/src/day20.rs) |
-|  21   | [Step Counter](https://adventofcode.com/2023/day/21)            | [day21.rs](aoc2023/src/day21.rs) |
-|  22   | [Sand Slabs](https://adventofcode.com/2023/day/22)              | [day22.rs](aoc2023/src/day22.rs) |
-|  23   | [A Long Walk](https://adventofcode.com/2023/day/23)             | [day23.rs](aoc2023/src/day23.rs) |
-|  24   | [Never Tell Me The ...](https://adventofcode.com/2023/day/24)   | [day24.rs](aoc2023/src/day24.rs) |
-|  25   | [Snowverload](https://adventofcode.com/2023/day/25)             | [day25.rs](aoc2023/src/day25.rs) |
+<!-- |   1   | [TODO](https://adventofcode.com/2024/day/1)  |  [day1.rs](aoc2024/src/day1.rs)  |                    |                    | -->
+<!-- |   2   | [TODO](https://adventofcode.com/2024/day/2)  |  [day2.rs](aoc2024/src/day2.rs)  |                    |                    | -->
+<!-- |   3   | [TODO](https://adventofcode.com/2024/day/3)  |  [day3.rs](aoc2024/src/day3.rs)  |                    |                    | -->
+<!-- |   4   | [TODO](https://adventofcode.com/2024/day/4)  |  [day4.rs](aoc2024/src/day4.rs)  |                    |                    | -->
+<!-- |   5   | [TODO](https://adventofcode.com/2024/day/5)  |  [day5.rs](aoc2024/src/day5.rs)  |                    |                    | -->
+<!-- |   6   | [TODO](https://adventofcode.com/2024/day/6)  |  [day6.rs](aoc2024/src/day6.rs)  |                    |                    | -->
+<!-- |   7   | [TODO](https://adventofcode.com/2024/day/7)  |  [day7.rs](aoc2024/src/day7.rs)  |                    |                    | -->
+<!-- |   8   | [TODO](https://adventofcode.com/2024/day/8)  |  [day8.rs](aoc2024/src/day8.rs)  |                    |                    | -->
+<!-- |   9   | [TODO](https://adventofcode.com/2024/day/9)  |  [day9.rs](aoc2024/src/day9.rs)  |                    |                    | -->
+<!-- |  10   | [TODO](https://adventofcode.com/2024/day/10) | [day10.rs](aoc2024/src/day10.rs) |                    |                    | -->
+<!-- |  11   | [TODO](https://adventofcode.com/2024/day/11) | [day11.rs](aoc2024/src/day11.rs) |                    |                    | -->
+<!-- |  12   | [TODO](https://adventofcode.com/2024/day/12) | [day12.rs](aoc2024/src/day12.rs) |                    |                    | -->
+<!-- |  13   | [TODO](https://adventofcode.com/2024/day/13) | [day13.rs](aoc2024/src/day13.rs) |                    |                    | -->
+<!-- |  14   | [TODO](https://adventofcode.com/2024/day/14) | [day14.rs](aoc2024/src/day14.rs) |                    |                    | -->
+<!-- |  15   | [TODO](https://adventofcode.com/2024/day/15) | [day15.rs](aoc2024/src/day15.rs) |                    |                    | -->
+<!-- |  16   | [TODO](https://adventofcode.com/2024/day/16) | [day16.rs](aoc2024/src/day16.rs) |                    |                    | -->
+<!-- |  17   | [TODO](https://adventofcode.com/2024/day/17) | [day17.rs](aoc2024/src/day17.rs) |                    |                    | -->
+<!-- |  18   | [TODO](https://adventofcode.com/2024/day/18) | [day18.rs](aoc2024/src/day18.rs) |                    |                    | -->
+<!-- |  19   | [TODO](https://adventofcode.com/2024/day/19) | [day19.rs](aoc2024/src/day19.rs) |                    |                    | -->
+<!-- |  20   | [TODO](https://adventofcode.com/2024/day/20) | [day20.rs](aoc2024/src/day20.rs) |                    |                    | -->
+<!-- |  21   | [TODO](https://adventofcode.com/2024/day/21) | [day21.rs](aoc2024/src/day21.rs) |                    |                    | -->
+<!-- |  22   | [TODO](https://adventofcode.com/2024/day/22) | [day22.rs](aoc2024/src/day22.rs) |                    |                    | -->
+<!-- |  23   | [TODO](https://adventofcode.com/2024/day/23) | [day23.rs](aoc2024/src/day23.rs) |                    |                    | -->
+<!-- |  24   | [TODO](https://adventofcode.com/2024/day/24) | [day24.rs](aoc2024/src/day24.rs) |                    |                    | -->
+<!-- |  25   | [TODO](https://adventofcode.com/2024/day/25) | [day25.rs](aoc2024/src/day25.rs) |                    |         —          | -->
 
-</td><td>
+</details>
 
-| Generator |  Runner  |
-| :-------: | :------: |
-| 4.408 µs  | 80.30 µs |
-| 112.7 µs  | 1.056 µs |
-| 5.884 µs  | 508.0 µs |
-| 92.21 µs  | 27.78 µs |
-| 21.77 µs  | 5.197 µs |
-| 16.90 µs  | 0.248 µs |
-| 170.1 µs  | 76.89 µs |
-| 181.6 µs  | 323.7 µs |
-| 165.9 µs  | 38.10 µs |
-| 159.7 µs  | 183.6 µs |
-| 7.197 ms  | 1.085 ms |
-| 276.1 µs  | 477.4 µs |
-| 58.49 µs  | 359.9 µs |
-| 87.00 µs  | 61.28 µs |
-| 195.8 µs  | 24.98 µs |
-| 33.91 µs  | 622.1 µs |
-| 50.64 µs  | 78.82 ms |
-| 30.70 µs  | 1.981 µs |
-| 228.0 µs  | 31.74 µs |
-| 33.73 µs  | 4.654 ms |
-| 498.8 µs  | 6.057 ms |
-| 254.8 µs  | 41.48 ms |
-| 101.8 µs  | 2.554 ms |
-| 100.3 µs  | 1.486 ms |
-| 320.8 µs  | 245.7 ms |
+<details open><summary><h3><a href="https://adventofcode.com/2023">Advent of Code 2023</a></h3></summary>
 
-</td><td>
+> All benchmarks are run on a *Dell Precision 5550* laptop with an *Intel Core i7-10875H* CPU.
 
-| Generator |  Runner  |
-| :-------: | :------: |
-| 0.558 µs  | 930.2 µs |
-| 126.6 µs  | 1.347 µs |
-| 0.462 µs  | 437.1 µs |
-| 113.4 µs  | 27.97 µs |
-| 17.87 µs  | 108.7 µs |
-| 0.666 µs  | 0.659 µs |
-| 177.0 µs  | 66.30 µs |
-| 153.8 µs  | 1.069 ms |
-| 119.2 µs  | 45.94 µs |
-| 163.3 µs  | 222.8 µs |
-| 7.172 ms  | 1.080 ms |
-| 247.1 µs  | 8.984 ms |
-| 10.10 µs  | 192.8 µs |
-| 72.12 µs  | 38.33 ms |
-| 161.4 µs  | 128.9 µs |
-| 32.84 µs  | 20.16 ms |
-| 29.74 µs  | 289.0 ms |
-| 43.98 µs  | 1.778 µs |
-| 213.9 µs  | 69.56 µs |
-| 32.87 µs  | 21.57 ms |
-| 491.3 µs  | 86.90 ms |
-| 252.4 µs  | 61.18 ms |
-| 101.2 µs  | 2.5839 s |
-| 79.73 µs  | 2.4001 s |
-|     —     |    —     |
+|   D   | Puzzle                                                          |               Code               | Part 1 Performance | Part 2 Performance |
+| :---: | --------------------------------------------------------------- | :------------------------------: | :----------------: | :----------------: |
+|   1   | [Trebuchet?!](https://adventofcode.com/2023/day/1)              |  [day1.rs](aoc2023/src/day1.rs)  |      84.70 μs      |      930.8 µs      |
+|   2   | [Cube Conundrum](https://adventofcode.com/2023/day/2)           |  [day2.rs](aoc2023/src/day2.rs)  |      113.7 μs      |      127.9 µs      |
+|   3   | [Gear Ratios](https://adventofcode.com/2023/day/3)              |  [day3.rs](aoc2023/src/day3.rs)  |      513.8 μs      |      437.6 µs      |
+|   4   | [Scratchcards](https://adventofcode.com/2023/day/4)             |  [day4.rs](aoc2023/src/day4.rs)  |      119.9 μs      |      141.4 µs      |
+|   5   | [If You Give A Seed ...](https://adventofcode.com/2023/day/5)   |  [day5.rs](aoc2023/src/day5.rs)  |      26.96 μs      |      126.6 µs      |
+|   6   | [Wait For It](https://adventofcode.com/2023/day/6)              |  [day6.rs](aoc2023/src/day6.rs)  |      17.14 μs      |      1.325 µs      |
+|   7   | [Camel Cards](https://adventofcode.com/2023/day/7)              |  [day7.rs](aoc2023/src/day7.rs)  |      246.9 μs      |      243.3 µs      |
+|   8   | [Haunted Wasteland](https://adventofcode.com/2023/day/8)        |  [day8.rs](aoc2023/src/day8.rs)  |      505.3 µs      |      1.223 ms      |
+|   9   | [Mirage Maintenance](https://adventofcode.com/2023/day/9)       |  [day9.rs](aoc2023/src/day9.rs)  |      204.0 µs      |      165.1 µs      |
+|  10   | [Pipe Maze](https://adventofcode.com/2023/day/10)               | [day10.rs](aoc2023/src/day10.rs) |      343.3 µs      |      386.1 µs      |
+|  11   | [Cosmic Expansion](https://adventofcode.com/2023/day/11)        | [day11.rs](aoc2023/src/day11.rs) |      8.282 ms      |      8.252 ms      |
+|  12   | [Hot Springs](https://adventofcode.com/2023/day/12)             | [day12.rs](aoc2023/src/day12.rs) |      753.5 µs      |      9.231 ms      |
+|  13   | [Point of Incidence](https://adventofcode.com/2023/day/13)      | [day13.rs](aoc2023/src/day13.rs) |      418.4 µs      |      202.9 µs      |
+|  14   | [Parabolic Reflector ...](https://adventofcode.com/2023/day/14) | [day14.rs](aoc2023/src/day14.rs) |      148.3 µs      |      38.40 ms      |
+|  15   | [Lens Library](https://adventofcode.com/2023/day/15)            | [day15.rs](aoc2023/src/day15.rs) |      220.8 µs      |      290.3 µs      |
+|  16   | [The Floor Will Be ...](https://adventofcode.com/2023/day/16)   | [day16.rs](aoc2023/src/day16.rs) |      656.0 µs      |      20.19 ms      |
+|  17   | [Clumsy Crucible](https://adventofcode.com/2023/day/17)         | [day17.rs](aoc2023/src/day17.rs) |      78.87 ms      |      289.0 ms      |
+|  18   | [Lavaduct Lagoon](https://adventofcode.com/2023/day/18)         | [day18.rs](aoc2023/src/day18.rs) |      32.68 µs      |      45.76 µs      |
+|  19   | [Aplenty](https://adventofcode.com/2023/day/19)                 | [day19.rs](aoc2023/src/day19.rs) |      259.7 µs      |      283.5 µs      |
+|  20   | [Pulse Propagation](https://adventofcode.com/2023/day/20)       | [day20.rs](aoc2023/src/day20.rs) |      4.687 ms      |      21.60 ms      |
+|  21   | [Step Counter](https://adventofcode.com/2023/day/21)            | [day21.rs](aoc2023/src/day21.rs) |      6.556 ms      |      87.39 ms      |
+|  22   | [Sand Slabs](https://adventofcode.com/2023/day/22)              | [day22.rs](aoc2023/src/day22.rs) |      41.73 ms      |      61.43 ms      |
+|  23   | [A Long Walk](https://adventofcode.com/2023/day/23)             | [day23.rs](aoc2023/src/day23.rs) |      2.656 ms      |      2.5840 s      |
+|  24   | [Never Tell Me The ...](https://adventofcode.com/2023/day/24)   | [day24.rs](aoc2023/src/day24.rs) |      1.586 ms      |      2.4002 s      |
+|  25   | [Snowverload](https://adventofcode.com/2023/day/25)             | [day25.rs](aoc2023/src/day25.rs) |      246.0 ms      |         —          |
 
-</td></tr>
-</table>
 </details>
 
 ## Instructions

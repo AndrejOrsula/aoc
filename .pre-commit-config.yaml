@@ -42,19 +42,12 @@ repos:
     hooks:
       - id: cargo-fmt
       - id: cargo-clippy
-        args:
-          [
-            "--workspace",
-            "--all-targets",
-            "--all-features",
-            "--",
-            "--deny=warnings",
-          ]
+        args: ["--all-targets", "--all-features", "--", "--deny=warnings"]
       - id: cargo-check
-        args: ["--workspace", "--all-targets", "--all-features"]
+        args: ["--all-targets", "--all-features"]
       - id: cargo-test
-        args: ["--workspace", "--all-targets"]
+        args: ["--all-targets"]
       - id: cargo-test-doc
-        args: ["--workspace", "--all-features"]
+        args: ["--all-features"]
       - id: cargo-doc
-        args: ["--workspace", "--no-deps", "--document-private-items"]
+        args: ["--no-deps", "--document-private-items"]

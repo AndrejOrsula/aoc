@@ -1,0 +1,35 @@
+[package]
+name = "aoc2024"
+description = "Advent of Code 2024"
+edition = "2021"
+rust-version = "1.82"
+version = "0.1.0"
+authors.workspace = true
+keywords.workspace = true
+license.workspace = true
+readme.workspace = true
+repository.workspace = true
+publish = false
+
+[dependencies]
+aoc-runner = { workspace = true }
+aoc-runner-derive = { workspace = true }
+indoc = { workspace = true }
+
+derive_more = { version = "1", features = ["full"] }
+itertools = { version = "0.13" }
+num = { version = "0.4" }
+num-integer = { version = "0.1" }
+pathfinding = { version = "4.4" }
+petgraph = { version = "0.6" }
+rayon = { version = "1.8" }
+rustc-hash = { version = "2.0" }
+rustworkx-core = { version = "0.15" }
+smallvec = { version = "1.11" }
+strum = { version = "0.26", features = ["derive"] }
+
+[features]
+default = []
+
+[lib]
+bench = false

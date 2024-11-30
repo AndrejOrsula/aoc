@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  MSRV: "1.75"
+  MSRV: "1.82"
   CARGO_TERM_COLOR: always
 
 jobs:
@@ -61,37 +61,37 @@ jobs:
 
       ## cargo check
       - name: cargo check
-        run: cargo check --workspace --all-targets --verbose
+        run: cargo check --all-targets --verbose
       - name: cargo check --no-default-features
-        run: cargo check --workspace --all-targets --no-default-features --verbose
+        run: cargo check --all-targets --no-default-features --verbose
       - name: cargo check --all-features
-        run: cargo check --workspace --all-targets --all-features --verbose
+        run: cargo check --all-targets --all-features --verbose
 
       ## cargo test
       - name: cargo test
-        run: cargo test --workspace --all-targets --verbose
+        run: cargo test --all-targets --verbose
       - name: cargo test --no-default-features
-        run: cargo test --workspace --all-targets --no-default-features --verbose
+        run: cargo test --all-targets --no-default-features --verbose
       - name: cargo test --all-features
-        run: cargo test --workspace --all-targets --all-features --verbose
+        run: cargo test --all-targets --all-features --verbose
 
       ## cargo test --doc
       - name: cargo test --doc
-        run: cargo test --workspace --doc --verbose
+        run: cargo test --doc --verbose
       - name: cargo test --doc --no-default-features
-        run: cargo test --workspace --doc --no-default-features --verbose
+        run: cargo test --doc --no-default-features --verbose
       - name: cargo test --doc --all-features
-        run: cargo test --workspace --doc --all-features --verbose
+        run: cargo test --doc --all-features --verbose
 
       ## [stable] cargo clippy
       - name: stable | cargo clippy
         if: ${{ matrix.toolchain == 'stable' }}
-        run: cargo clippy --workspace --all-targets --all-features --no-deps --verbose -- --deny warnings
+        run: cargo clippy --all-targets --all-features --no-deps --verbose -- --deny warnings
 
       ## [stable] cargo doc
       - name: stable | cargo doc --document-private-items
         if: ${{ matrix.toolchain == 'stable' }}
-        run: cargo doc --workspace --all-features --no-deps --document-private-items --verbose
+        run: cargo doc --all-features --no-deps --document-private-items --verbose
 
       ## [stable] Code coverage
       - name: stable | Install cargo llvm-cov for code coverage
@@ -100,7 +100,7 @@ jobs:
       ## [stable] Generate coverage with cargo llvm-cov
       - name: stable | Generate coverage
         if: ${{ matrix.toolchain == 'stable' }}
-        run: cargo llvm-cov --workspace --all-features --lcov --output-path lcov.info
+        run: cargo llvm-cov --all-features --lcov --output-path lcov.info
       ## [stable] Upload coverage to codecov.io
       - name: stable | Upload coverage
         if: ${{ matrix.toolchain == 'stable' }}

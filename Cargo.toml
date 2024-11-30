@@ -1,5 +1,6 @@
 [workspace]
-members = ["aoc2023"]
+members = ["aoc2023", "aoc2024"]
+default-members = ["aoc2024"]
 resolver = "2"
 
 [workspace.package]
