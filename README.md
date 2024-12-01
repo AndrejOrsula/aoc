@@ -15,10 +15,10 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 
 > All benchmarks are run on a *Dell Precision 5550* laptop with an *Intel Core i7-10875H* CPU.
 
-|   D   | Puzzle | Code  | Part 1 Performance | Part 2 Performance |
-| :---: | ------ | :---: | :----------------: | :----------------: |
+|   D   | Puzzle                                                    |              Code              | Part 1 Performance | Part 2 Performance |
+| :---: | --------------------------------------------------------- | :----------------------------: | :----------------: | :----------------: |
+|   1   | [Historian Hysteria](https://adventofcode.com/2024/day/1) | [day1.rs](aoc2024/src/day1.rs) |      95.61 µs      |      77.78 µs      |
 
-<!-- |   1   | [TODO](https://adventofcode.com/2024/day/1)  |  [day1.rs](aoc2024/src/day1.rs)  |                    |                    | -->
 <!-- |   2   | [TODO](https://adventofcode.com/2024/day/2)  |  [day2.rs](aoc2024/src/day2.rs)  |                    |                    | -->
 <!-- |   3   | [TODO](https://adventofcode.com/2024/day/3)  |  [day3.rs](aoc2024/src/day3.rs)  |                    |                    | -->
 <!-- |   4   | [TODO](https://adventofcode.com/2024/day/4)  |  [day4.rs](aoc2024/src/day4.rs)  |                    |                    | -->
