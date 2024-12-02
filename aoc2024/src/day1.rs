@@ -2,12 +2,10 @@ use aoc_runner_derive::aoc;
 
 #[inline]
 fn parse_line(line: &str) -> (u32, u32) {
-    unsafe {
-        let (l, r) = line.split_once(char::is_whitespace).unwrap_unchecked();
-        let l = l.parse().unwrap_unchecked();
-        let r = r.trim_start().parse().unwrap_unchecked();
-        (l, r)
-    }
+    let (l, r) = line.split_once(|c: char| c.is_ascii_whitespace()).unwrap();
+    let l = l.parse().unwrap();
+    let r = r.trim_ascii_start().parse().unwrap();
+    (l, r)
 }
 
 #[aoc(day1, part1)]
