@@ -19,13 +19,10 @@ indoc = { workspace = true }
 arrayvec = { version = "0.7" }
 derive_more = { version = "1", features = ["full"] }
 itertools = { version = "0.13" }
-num = { version = "0.4" }
-num-integer = { version = "0.1" }
+nalgebra = { version = "0.33" }
 pathfinding = { version = "4.4" }
-petgraph = { version = "0.6" }
 rayon = { version = "1.8" }
 rustc-hash = { version = "2.0" }
-rustworkx-core = { version = "0.15" }
 smallvec = { version = "1.11" }
 strum = { version = "0.26", features = ["derive"] }
 
