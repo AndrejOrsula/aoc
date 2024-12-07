@@ -23,8 +23,8 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 |   4   | [Ceres Search](https://adventofcode.com/2024/day/4)       | [day4.rs](aoc2024/src/day4.rs) |      257.6 µs      |      142.3 µs      |
 |   5   | [Print Queue](https://adventofcode.com/2024/day/5)        | [day5.rs](aoc2024/src/day5.rs) |      98.64 µs      |      133.9 µs      |
 |   6   | [Guard Gallivant](https://adventofcode.com/2024/day/6)    | [day6.rs](aoc2024/src/day6.rs) |      39.48 µs      |      6.768 ms      |
+|   7   | [Bridge Repair](https://adventofcode.com/2024/day/7)      | [day7.rs](aoc2024/src/day7.rs) |      824.2 µs      |      49.06 ms      |
 
-<!-- |   7   | [TODO](https://adventofcode.com/2024/day/7)  |  [day7.rs](aoc2024/src/day7.rs)  |                    |                    | -->
 <!-- |   8   | [TODO](https://adventofcode.com/2024/day/8)  |  [day8.rs](aoc2024/src/day8.rs)  |                    |                    | -->
 <!-- |   9   | [TODO](https://adventofcode.com/2024/day/9)  |  [day9.rs](aoc2024/src/day9.rs)  |                    |                    | -->
 <!-- |  10   | [TODO](https://adventofcode.com/2024/day/10) | [day10.rs](aoc2024/src/day10.rs) |                    |                    | -->
