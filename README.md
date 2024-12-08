@@ -15,17 +15,17 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 
 > All benchmarks are run on a *Dell Precision 5550* laptop with an *Intel Core i7-10875H* CPU.
 
-|   D   | Puzzle                                                    |              Code              | Part 1 Performance | Part 2 Performance |
-| :---: | --------------------------------------------------------- | :----------------------------: | :----------------: | :----------------: |
-|   1   | [Historian Hysteria](https://adventofcode.com/2024/day/1) | [day1.rs](aoc2024/src/day1.rs) |      92.26 µs      |      69.56 µs      |
-|   2   | [Red-Nosed Reports](https://adventofcode.com/2024/day/2)  | [day2.rs](aoc2024/src/day2.rs) |      67.96 µs      |      141.4 µs      |
-|   3   | [Mull It Over](https://adventofcode.com/2024/day/3)       | [day3.rs](aoc2024/src/day3.rs) |      81.17 µs      |      79.13 µs      |
-|   4   | [Ceres Search](https://adventofcode.com/2024/day/4)       | [day4.rs](aoc2024/src/day4.rs) |      257.6 µs      |      142.3 µs      |
-|   5   | [Print Queue](https://adventofcode.com/2024/day/5)        | [day5.rs](aoc2024/src/day5.rs) |      98.64 µs      |      133.9 µs      |
-|   6   | [Guard Gallivant](https://adventofcode.com/2024/day/6)    | [day6.rs](aoc2024/src/day6.rs) |      39.48 µs      |      6.768 ms      |
-|   7   | [Bridge Repair](https://adventofcode.com/2024/day/7)      | [day7.rs](aoc2024/src/day7.rs) |      824.2 µs      |      49.06 ms      |
+|   D   | Puzzle                                                       |              Code              | Part 1 Performance | Part 2 Performance |
+| :---: | ------------------------------------------------------------ | :----------------------------: | :----------------: | :----------------: |
+|   1   | [Historian Hysteria](https://adventofcode.com/2024/day/1)    | [day1.rs](aoc2024/src/day1.rs) |      92.26 µs      |      69.56 µs      |
+|   2   | [Red-Nosed Reports](https://adventofcode.com/2024/day/2)     | [day2.rs](aoc2024/src/day2.rs) |      67.96 µs      |      141.4 µs      |
+|   3   | [Mull It Over](https://adventofcode.com/2024/day/3)          | [day3.rs](aoc2024/src/day3.rs) |      81.17 µs      |      79.13 µs      |
+|   4   | [Ceres Search](https://adventofcode.com/2024/day/4)          | [day4.rs](aoc2024/src/day4.rs) |      257.6 µs      |      142.3 µs      |
+|   5   | [Print Queue](https://adventofcode.com/2024/day/5)           | [day5.rs](aoc2024/src/day5.rs) |      98.64 µs      |      133.9 µs      |
+|   6   | [Guard Gallivant](https://adventofcode.com/2024/day/6)       | [day6.rs](aoc2024/src/day6.rs) |      39.48 µs      |      6.768 ms      |
+|   7   | [Bridge Repair](https://adventofcode.com/2024/day/7)         | [day7.rs](aoc2024/src/day7.rs) |      824.2 µs      |      49.06 ms      |
+|   8   | [Resonant Collinearity](https://adventofcode.com/2024/day/8) | [day8.rs](aoc2024/src/day8.rs) |      40.13 µs      |      36.43 µs      |
 
-<!-- |   8   | [TODO](https://adventofcode.com/2024/day/8)  |  [day8.rs](aoc2024/src/day8.rs)  |                    |                    | -->
 <!-- |   9   | [TODO](https://adventofcode.com/2024/day/9)  |  [day9.rs](aoc2024/src/day9.rs)  |                    |                    | -->
 <!-- |  10   | [TODO](https://adventofcode.com/2024/day/10) | [day10.rs](aoc2024/src/day10.rs) |                    |                    | -->
 <!-- |  11   | [TODO](https://adventofcode.com/2024/day/11) | [day11.rs](aoc2024/src/day11.rs) |                    |                    | -->
