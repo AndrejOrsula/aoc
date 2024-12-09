@@ -25,8 +25,8 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 |   6   | [Guard Gallivant](https://adventofcode.com/2024/day/6)       | [day6.rs](aoc2024/src/day6.rs) |      39.48 µs      |      6.768 ms      |
 |   7   | [Bridge Repair](https://adventofcode.com/2024/day/7)         | [day7.rs](aoc2024/src/day7.rs) |      824.2 µs      |      49.06 ms      |
 |   8   | [Resonant Collinearity](https://adventofcode.com/2024/day/8) | [day8.rs](aoc2024/src/day8.rs) |      40.13 µs      |      36.43 µs      |
+|   9   | [Disk Fragmenter](https://adventofcode.com/2024/day/9)       | [day9.rs](aoc2024/src/day9.rs) |      186.2 µs      |      134.5 ms      |
 
-<!-- |   9   | [TODO](https://adventofcode.com/2024/day/9)  |  [day9.rs](aoc2024/src/day9.rs)  |                    |                    | -->
 <!-- |  10   | [TODO](https://adventofcode.com/2024/day/10) | [day10.rs](aoc2024/src/day10.rs) |                    |                    | -->
 <!-- |  11   | [TODO](https://adventofcode.com/2024/day/11) | [day11.rs](aoc2024/src/day11.rs) |                    |                    | -->
 <!-- |  12   | [TODO](https://adventofcode.com/2024/day/12) | [day12.rs](aoc2024/src/day12.rs) |                    |                    | -->
