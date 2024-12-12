@@ -26,10 +26,10 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 |   7   | [Bridge Repair](https://adventofcode.com/2024/day/7)         |  [day7.rs](aoc2024/src/day7.rs)  |      824.2 µs      |      49.06 ms      |
 |   8   | [Resonant Collinearity](https://adventofcode.com/2024/day/8) |  [day8.rs](aoc2024/src/day8.rs)  |      40.13 µs      |      36.43 µs      |
 |   9   | [Disk Fragmenter](https://adventofcode.com/2024/day/9)       |  [day9.rs](aoc2024/src/day9.rs)  |      186.2 µs      |      134.5 ms      |
-|  10   | [Hoof It](https://adventofcode.com/2024/day/10)              | [day10.rs](aoc2024/src/day10.rs) |     210.98 µs      |      82.03 µs      |
-|  11   | [Plutonian Pebbles](https://adventofcode.com/2024/day/11)    | [day11.rs](aoc2024/src/day11.rs) |     215.02 µs      |      5.208 ms      |
+|  10   | [Hoof It](https://adventofcode.com/2024/day/10)              | [day10.rs](aoc2024/src/day10.rs) |      210.9 µs      |      82.03 µs      |
+|  11   | [Plutonian Pebbles](https://adventofcode.com/2024/day/11)    | [day11.rs](aoc2024/src/day11.rs) |      215.0 µs      |      5.208 ms      |
+|  12   | [Garden Groups](https://adventofcode.com/2024/day/12)        | [day12.rs](aoc2024/src/day12.rs) |      1.319 ms      |      1.974 ms      |
 
-<!-- |  12   | [TODO](https://adventofcode.com/2024/day/12) | [day12.rs](aoc2024/src/day12.rs) |                    |                    | -->
 <!-- |  13   | [TODO](https://adventofcode.com/2024/day/13) | [day13.rs](aoc2024/src/day13.rs) |                    |                    | -->
 <!-- |  14   | [TODO](https://adventofcode.com/2024/day/14) | [day14.rs](aoc2024/src/day14.rs) |                    |                    | -->
 <!-- |  15   | [TODO](https://adventofcode.com/2024/day/15) | [day15.rs](aoc2024/src/day15.rs) |                    |                    | -->
