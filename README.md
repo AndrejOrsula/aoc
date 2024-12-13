@@ -29,8 +29,8 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 |  10   | [Hoof It](https://adventofcode.com/2024/day/10)              | [day10.rs](aoc2024/src/day10.rs) |      210.9 µs      |      82.03 µs      |
 |  11   | [Plutonian Pebbles](https://adventofcode.com/2024/day/11)    | [day11.rs](aoc2024/src/day11.rs) |      215.0 µs      |      5.208 ms      |
 |  12   | [Garden Groups](https://adventofcode.com/2024/day/12)        | [day12.rs](aoc2024/src/day12.rs) |      1.319 ms      |      1.974 ms      |
+|  13   | [Claw Contraption](https://adventofcode.com/2024/day/13)     | [day13.rs](aoc2024/src/day13.rs) |      87.33 µs      |      72.88 µs      |
 
-<!-- |  13   | [TODO](https://adventofcode.com/2024/day/13) | [day13.rs](aoc2024/src/day13.rs) |                    |                    | -->
 <!-- |  14   | [TODO](https://adventofcode.com/2024/day/14) | [day14.rs](aoc2024/src/day14.rs) |                    |                    | -->
 <!-- |  15   | [TODO](https://adventofcode.com/2024/day/15) | [day15.rs](aoc2024/src/day15.rs) |                    |                    | -->
 <!-- |  16   | [TODO](https://adventofcode.com/2024/day/16) | [day16.rs](aoc2024/src/day16.rs) |                    |                    | -->
