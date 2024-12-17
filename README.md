@@ -32,8 +32,8 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 |  13   | [Claw Contraption](https://adventofcode.com/2024/day/13)     | [day13.rs](aoc2024/src/day13.rs) |      87.33 µs      |      72.88 µs      |
 |  14   | [Restroom Redoubt](https://adventofcode.com/2024/day/14)     | [day14.rs](aoc2024/src/day14.rs) |      35.37 µs      |      20.60 ms      |
 |  15   | [Warehouse Woes](https://adventofcode.com/2024/day/15)       | [day15.rs](aoc2024/src/day15.rs) |      234.6 µs      |      241.8 µs      |
+|  16   | [Reindeer Maze](https://adventofcode.com/2024/day/16)        | [day16.rs](aoc2024/src/day16.rs) |      5.066 ms      |      5.353 ms      |
 
-<!-- |  16   | [TODO](https://adventofcode.com/2024/day/16) | [day16.rs](aoc2024/src/day16.rs) |                    |                    | -->
 <!-- |  17   | [TODO](https://adventofcode.com/2024/day/17) | [day17.rs](aoc2024/src/day17.rs) |                    |                    | -->
 <!-- |  18   | [TODO](https://adventofcode.com/2024/day/18) | [day18.rs](aoc2024/src/day18.rs) |                    |                    | -->
 <!-- |  19   | [TODO](https://adventofcode.com/2024/day/19) | [day19.rs](aoc2024/src/day19.rs) |                    |                    | -->
