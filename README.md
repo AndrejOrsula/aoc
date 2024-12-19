@@ -35,8 +35,8 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 |  16   | [Reindeer Maze](https://adventofcode.com/2024/day/16)          | [day16.rs](aoc2024/src/day16.rs) |      5.066 ms      |      5.353 ms      |
 |  17   | [Chronospatial Computer](https://adventofcode.com/2024/day/17) | [day17.rs](aoc2024/src/day17.rs) |      2.124 µs      |      26.82 µs      |
 |  18   | [RAM Run](https://adventofcode.com/2024/day/18)                | [day18.rs](aoc2024/src/day18.rs) |      219.9 µs      |      291.5 µs      |
+|  19   | [Linen Layout](https://adventofcode.com/2024/day/19)           | [day19.rs](aoc2024/src/day19.rs) |      8.696 ms      |      8.696 ms      |
 
-<!-- |  19   | [TODO](https://adventofcode.com/2024/day/19) | [day19.rs](aoc2024/src/day19.rs) |                    |                    | -->
 <!-- |  20   | [TODO](https://adventofcode.com/2024/day/20) | [day20.rs](aoc2024/src/day20.rs) |                    |                    | -->
 <!-- |  21   | [TODO](https://adventofcode.com/2024/day/21) | [day21.rs](aoc2024/src/day21.rs) |                    |                    | -->
 <!-- |  22   | [TODO](https://adventofcode.com/2024/day/22) | [day22.rs](aoc2024/src/day22.rs) |                    |                    | -->
