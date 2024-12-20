@@ -1,8 +1,5 @@
 use aoc_runner_derive::aoc;
 
-// 360
-// 58,62
-
 #[aoc(day18, part1)]
 #[must_use]
 pub fn part1(input: &str) -> usize {
