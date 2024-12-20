@@ -4,75 +4,69 @@ use strum::IntoEnumIterator;
 #[aoc(day20, part1)]
 #[must_use]
 pub fn part1(input: &str) -> usize {
-    Maze::<141>::parse(input).solve1::<100>()
+    Maze::<139>::parse(input).solve1::<100>()
 }
 
 #[aoc(day20, part2)]
 #[must_use]
 pub fn part2(input: &str) -> usize {
-    Maze::<141>::parse(input).solve2::<100>()
+    Maze::<139>::parse(input).solve2::<100>()
 }
 
 struct Maze<const D: usize> {
     map: nalgebra::SMatrix<u8, D, D>,
-    start_pos: (usize, usize),
-    goal_pos: (usize, usize),
+    costmap: nalgebra::SMatrix<[usize; 2], D, D>,
+    original_cost: usize,
 }
 
 impl<const D: usize> Maze<D> {
+    #[inline]
     fn parse(input: &str) -> Self {
         let input = input.as_bytes();
-        let width = unsafe { input.iter().position(|&c| c == b'\n').unwrap_unchecked() };
-        let mut map = nalgebra::SMatrix::from_element(b'.');
-        let mut start_pos = (0, 0);
-        let mut goal_pos = (0, 0);
-        input
-            .chunks(unsafe { width.unchecked_add(1) })
+        let map = nalgebra::SMatrix::<u8, D, D>::from_iterator(
+            input
+                .chunks(unsafe { D.unchecked_add(3) })
+                .skip(1)
+                .take(D)
+                .flat_map(|line| line.iter().skip(1).take(D).copied()),
+        );
+        let pos: Vec<_> = map
+            .iter()
             .enumerate()
-            .for_each(|(y, line)| {
-                line.iter()
-                    .enumerate()
-                    .take(width)
-                    .for_each(|(x, &b)| match b {
-                        b'S' => start_pos = (x, y),
-                        b'E' => goal_pos = (x, y),
-                        b'#' => map[(x, y)] = b,
-                        _ => {}
-                    });
-            });
+            .filter(|(_, &b)| b == b'S' || b == b'E')
+            .take(2)
+            .map(|(i, _)| (i % D, i / D))
+            .collect();
+
+        let mut costmap = nalgebra::SMatrix::from_element([usize::MAX; 2]);
+        for (i, &pos) in pos.iter().enumerate() {
+            costmap[pos][i] = 0;
+            let mut queue = pos;
+            'outer: loop {
+                let new_cost = unsafe { costmap[queue][i].unchecked_add(1) };
+                if let Some(new_pos) = Direction::iter()
+                    .map(|dir| dir.step(queue))
+                    .filter(|&new_pos| new_pos.0 < D && new_pos.1 < D)
+                    .filter(|&new_pos| map[new_pos] != b'#')
+                    .find(|&new_pos| new_cost < costmap[new_pos][i])
+                {
+                    queue = new_pos;
+                    costmap[new_pos][i] = new_cost;
+                    continue 'outer;
+                }
+                break;
+            }
+        }
 
         Self {
             map,
-            start_pos,
-            goal_pos,
+            costmap,
+            original_cost: costmap[pos[0]][1],
         }
     }
 
-    fn compute_cost(&self, start_pos: (usize, usize)) -> nalgebra::DMatrix<usize> {
-        let mut cost =
-            nalgebra::DMatrix::from_element(self.map.nrows(), self.map.ncols(), usize::MAX);
-        cost[start_pos] = 0;
-        let mut queue = std::collections::VecDeque::new();
-        queue.push_back(start_pos);
-        while let Some(pos) = queue.pop_front() {
-            let new_cost = unsafe { cost[pos].unchecked_add(1) };
-            Direction::iter()
-                .map(|dir| dir.step(pos))
-                .filter(|&new_pos| self.map[new_pos] == b'.')
-                .for_each(|new_pos| {
-                    if new_cost < cost[new_pos] {
-                        queue.push_back(new_pos);
-                        cost[new_pos] = new_cost;
-                    }
-                });
-        }
-        cost
-    }
-
+    #[inline]
     fn solve1<const L: usize>(self) -> usize {
-        let cost_from_start = self.compute_cost(self.start_pos);
-        let cost_from_goal = self.compute_cost(self.goal_pos);
-        let original_cost = cost_from_start[self.goal_pos];
         self.map
             .column_iter()
             .enumerate()
@@ -85,64 +79,58 @@ impl<const D: usize> Maze<D> {
             .map(|pos| {
                 Direction::iter()
                     .filter(|dir| {
-                        let from_start_pos = dir.step(pos);
-                        if from_start_pos.0 >= self.map.nrows()
-                            || from_start_pos.1 >= self.map.ncols()
-                        {
+                        let new_pos0 = dir.step(pos);
+                        if new_pos0.0 >= D || new_pos0.1 >= D {
                             return false;
                         }
-                        let start_cost = cost_from_start[from_start_pos];
-                        if start_cost == usize::MAX {
+                        let new_cost0 = self.costmap[new_pos0][0];
+                        if new_cost0 == usize::MAX {
                             return false;
                         }
-                        let from_goal_pos = dir.reverse().step(pos);
-                        if from_goal_pos.0 >= self.map.nrows()
-                            || from_goal_pos.1 >= self.map.ncols()
-                        {
+                        let new_pos1 = dir.reverse().step(pos);
+                        if new_pos1.0 >= D || new_pos1.1 >= D {
                             return false;
                         }
-                        let goal_cost = cost_from_goal[from_goal_pos];
-                        if goal_cost == usize::MAX {
+                        let new_cost1 = self.costmap[new_pos1][1];
+                        if new_cost1 == usize::MAX {
                             return false;
                         }
                         let new_cost =
-                            unsafe { start_cost.unchecked_add(goal_cost).unchecked_add(2) };
-                        new_cost < original_cost
-                            && unsafe { original_cost.unchecked_sub(new_cost) } >= L
+                            unsafe { new_cost0.unchecked_add(new_cost1).unchecked_add(2) };
+                        new_cost < self.original_cost
+                            && unsafe { self.original_cost.unchecked_sub(new_cost) } >= L
                     })
                     .count()
             })
             .sum()
     }
 
+    #[inline]
     fn solve2<const L: usize>(self) -> usize {
-        let cost_from_start = self.compute_cost(self.start_pos);
-        let cost_from_goal = self.compute_cost(self.goal_pos);
-        let original_cost = cost_from_start[self.goal_pos];
         self.map
             .column_iter()
             .enumerate()
             .flat_map(|(y, col)| {
                 col.into_iter()
                     .enumerate()
-                    .filter(|(_, &b)| b == b'.')
+                    .filter(|(_, &b)| b != b'#')
                     .map(move |(x, _)| (x, y))
             })
             .map(|pos| {
-                let start_cost = cost_from_start[pos];
+                let start_cost = self.costmap[pos][0];
                 let pos = (pos.0 as isize, pos.1 as isize);
                 (-((pos.0).min(20))..=20)
                     .map(|dx| (dx, unsafe { pos.0.unchecked_add(dx) }))
-                    .filter(|&(_, new_x)| new_x < self.map.nrows() as isize)
+                    .filter(|&(_, new_x)| new_x < D as isize)
                     .map(|(dx, new_x)| {
                         let dx_abs = dx.abs();
                         let max_y = unsafe { 20_isize.unchecked_sub(dx_abs) };
                         (-((pos.1).min(max_y))..=max_y)
                             .map(|dy| (dy, unsafe { pos.1.unchecked_add(dy) }))
-                            .filter(|&(_, new_y)| new_y < self.map.ncols() as isize)
+                            .filter(|&(_, new_y)| new_y < D as isize)
                             .filter(|&(dy, new_y)| {
                                 let new_pos = (new_x as usize, new_y as usize);
-                                let goal_cost = cost_from_goal[new_pos];
+                                let goal_cost = self.costmap[new_pos][1];
                                 if goal_cost == usize::MAX {
                                     return false;
                                 }
@@ -151,8 +139,8 @@ impl<const D: usize> Maze<D> {
                                         .unchecked_add(goal_cost)
                                         .unchecked_add(dx_abs.unchecked_add(dy.abs()) as usize)
                                 };
-                                new_cost < original_cost
-                                    && unsafe { original_cost.unchecked_sub(new_cost) } >= L
+                                new_cost < self.original_cost
+                                    && unsafe { self.original_cost.unchecked_sub(new_cost) } >= L
                             })
                             .count()
                     })
@@ -215,11 +203,11 @@ mod tests {
 
     #[test]
     pub fn part1_example() {
-        assert_eq!(Maze::<15>::parse(SAMPLE).solve1::<64>(), 1);
+        assert_eq!(Maze::<13>::parse(SAMPLE).solve1::<64>(), 1);
     }
 
     #[test]
     pub fn part2_example() {
-        assert_eq!(Maze::<15>::parse(SAMPLE).solve2::<76>(), 3);
+        assert_eq!(Maze::<13>::parse(SAMPLE).solve2::<76>(), 3);
     }
 }
