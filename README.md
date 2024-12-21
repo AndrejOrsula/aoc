@@ -37,8 +37,8 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 |  18   | [RAM Run](https://adventofcode.com/2024/day/18)                | [day18.rs](aoc2024/src/day18.rs) |      219.9 µs      |      291.5 µs      |
 |  19   | [Linen Layout](https://adventofcode.com/2024/day/19)           | [day19.rs](aoc2024/src/day19.rs) |      8.696 ms      |      8.696 ms      |
 |  20   | [Race Condition](https://adventofcode.com/2024/day/20)         | [day20.rs](aoc2024/src/day20.rs) |      335.5 µs      |      17.31 ms      |
+|  21   | [Keypad Conundrum](https://adventofcode.com/2024/day/21)       | [day21.rs](aoc2024/src/day21.rs) |       529 n        |       476 ns       |
 
-<!-- |  21   | [TODO](https://adventofcode.com/2024/day/21) | [day21.rs](aoc2024/src/day21.rs) |                    |                    | -->
 <!-- |  22   | [TODO](https://adventofcode.com/2024/day/22) | [day22.rs](aoc2024/src/day22.rs) |                    |                    | -->
 <!-- |  23   | [TODO](https://adventofcode.com/2024/day/23) | [day23.rs](aoc2024/src/day23.rs) |                    |                    | -->
 <!-- |  24   | [TODO](https://adventofcode.com/2024/day/24) | [day24.rs](aoc2024/src/day24.rs) |                    |                    | -->
