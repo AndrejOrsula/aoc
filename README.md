@@ -39,7 +39,8 @@ My solutions to [Advent of Code](https://adventofcode.com) puzzles.
 |  20   | [Race Condition](https://adventofcode.com/2024/day/20)         | [day20.rs](aoc2024/src/day20.rs) |      335.5 µs      |      17.31 ms      |
 |  21   | [Keypad Conundrum](https://adventofcode.com/2024/day/21)       | [day21.rs](aoc2024/src/day21.rs) |       529 ns       |       476 ns       |
 |  22   | [Monkey Market](https://adventofcode.com/2024/day/22)          | [day22.rs](aoc2024/src/day22.rs) |      7.427 ms      |      13.17 ms      |
-|  23   | [LAN Party](https://adventofcode.com/2024/day/24)              | [day24.rs](aoc2024/src/day24.rs) |      326.8 µs      |      147.2 µs      |
+|  23   | [LAN Party](https://adventofcode.com/2024/day/23)              | [day24.rs](aoc2024/src/day23.rs) |      326.8 µs      |      147.2 µs      |
+|  24   | [Crossed Wires](https://adventofcode.com/2024/day/24)          | [day23.rs](aoc2024/src/day24.rs) |      85.72 µs      |      23.31 µs      |
 
 <!-- |  24   | [TODO](https://adventofcode.com/2024/day/23) | [day23.rs](aoc2024/src/day23.rs) |                    |                    | -->
 <!-- |  25   | [TODO](https://adventofcode.com/2024/day/25) | [day25.rs](aoc2024/src/day25.rs) |                    |         —          | -->
