@@ -1,10 +1,12 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 
+exclude: Cargo.lock
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v4.6.0
     hooks:
+      - id: check-added-large-files
       - id: check-case-conflict
       - id: check-executables-have-shebangs
       - id: check-merge-conflict
@@ -25,22 +27,11 @@ repos:
     hooks:
       - id: beautysh
 
-  - repo: https://github.com/codespell-project/codespell
-    rev: v2.3.0
-    hooks:
-      - id: codespell
-        args: ["--ignore-words-list", "crate"]
-        exclude: Cargo.lock|input/.*|aoc2023/.*/day15.rs
-
-  - repo: https://github.com/hadolint/hadolint
-    rev: v2.13.1-beta
-    hooks:
-      - id: hadolint-docker
-
   - repo: https://github.com/AndrejOrsula/pre-commit-cargo
     rev: 0.3.0
     hooks:
       - id: cargo-fmt
+      - id: cargo-update
       - id: cargo-clippy
         args: ["--all-targets", "--all-features", "--", "--deny=warnings"]
       - id: cargo-check
@@ -51,3 +42,15 @@ repos:
         args: ["--all-features"]
       - id: cargo-doc
         args: ["--no-deps", "--document-private-items"]
+
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.13.1-beta
+    hooks:
+      - id: hadolint-docker
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.3.0
+    hooks:
+      - id: codespell
+        args: ["--ignore-words-list", "crate"]
+        exclude: Cargo.lock|input/.*|aoc2023/.*/day15.rs
