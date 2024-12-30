@@ -20,7 +20,7 @@ arrayvec = { version = "0.7" }
 derive_more = { version = "1", features = ["full"] }
 itertools = { version = "0.13" }
 nalgebra = { version = "0.33" }
-pathfinding = { version = "4.4" }
+pathfinding = { version = "4.13" }
 rayon = { version = "1.8" }
 rustc-hash = { version = "2.0" }
 smallvec = { version = "1.11" }
