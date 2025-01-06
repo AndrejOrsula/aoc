@@ -17,7 +17,7 @@ aoc-runner-derive = { workspace = true }
 indoc = { workspace = true }
 
 derive_more = { version = "1", features = ["full"] }
-itertools = { version = "0.13" }
+itertools = { version = "0.14" }
 num = { version = "0.4" }
 num-integer = { version = "0.1" }
 pathfinding = { version = "4.13" }

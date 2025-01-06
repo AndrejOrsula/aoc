@@ -18,7 +18,7 @@ indoc = { workspace = true }
 
 arrayvec = { version = "0.7" }
 derive_more = { version = "1", features = ["full"] }
-itertools = { version = "0.13" }
+itertools = { version = "0.14" }
 nalgebra = { version = "0.33" }
 pathfinding = { version = "4.13" }
 rayon = { version = "1.8" }
