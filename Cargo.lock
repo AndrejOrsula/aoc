@@ -71,7 +71,7 @@ dependencies = [
  "num",
  "num-integer",
  "pathfinding",
- "petgraph 0.7.0",
+ "petgraph 0.7.1",
  "rayon",
  "rustc-hash 2.1.0",
  "rustworkx-core",
@@ -583,9 +583,9 @@ dependencies = [
 
 [[package]]
 name = "petgraph"
-version = "0.7.0"
+version = "0.7.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e2b1374ec32450264534c67d1ccb5ca09818c4db8fd87cf97478d0df2fa44c65"
+checksum = "3672b37090dbd86368a4145bc067582552b29c27377cad4e0a306c97f9bd7772"
 dependencies = [
  "fixedbitset 0.5.7",
  "indexmap",
