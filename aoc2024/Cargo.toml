@@ -23,7 +23,7 @@ nalgebra = { version = "0.33" }
 pathfinding = { version = "4.14" }
 rayon = { version = "1.8" }
 rustc-hash = { version = "2.1" }
-smallvec = { version = "1.14" }
+smallvec = { version = "1.15" }
 strum = { version = "0.27", features = ["derive"] }
 
 [features]
