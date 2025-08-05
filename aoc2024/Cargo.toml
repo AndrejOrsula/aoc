@@ -19,7 +19,7 @@ indoc = { workspace = true }
 arrayvec = { version = "0.7" }
 derive_more = { version = "2", features = ["full"] }
 itertools = { version = "0.14" }
-nalgebra = { version = "0.33" }
+nalgebra = { version = "0.34" }
 pathfinding = { version = "4.14" }
 rayon = { version = "1.8" }
 rustc-hash = { version = "2.1" }
