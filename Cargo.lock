@@ -1144,9 +1144,9 @@ checksum = "589f6da84c646204747d1270a2a5661ea66ed1cced2631d546fdfb155959f9ec"
 
 [[package]]
 name = "z3"
-version = "0.13.3"
+version = "0.14.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "11593be221028adbadaa25a9ace764693d059c51d58870b27d8c78582aaa6574"
+checksum = "16b4303594e0b82aae4dee2441abe4b67e11eb5a35c8d15723113baa14dc50a4"
 dependencies = [
  "log",
  "num",
