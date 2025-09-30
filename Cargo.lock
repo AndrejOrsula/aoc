@@ -1145,9 +1145,9 @@ dependencies = [
 
 [[package]]
 name = "z3"
-version = "0.18.2"
+version = "0.19.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2e6abe40eee88a065f2bde2f663e0e6aa95552d9124edc96ab291376db19f9a2"
+checksum = "13a21944964e029e99e0d1d7b554994e86752f96aeed9f5418078bb6f38bd2d0"
 dependencies = [
  "log",
  "num",
@@ -1156,9 +1156,9 @@ dependencies = [
 
 [[package]]
 name = "z3-sys"
-version = "0.9.10"
+version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6cd1b38ffd95fae0fcc40026fb1a822074e2a923ad4e011e90df878cbed721e0"
+checksum = "a5cf46e09874bd7db314139c7319ab506d1db771111dc3bc66f05496207540d0"
 dependencies = [
  "bindgen",
  "pkg-config",
