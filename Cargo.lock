@@ -1148,9 +1148,9 @@ dependencies = [
 
 [[package]]
 name = "z3"
-version = "0.19.1"
+version = "0.19.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "13a21944964e029e99e0d1d7b554994e86752f96aeed9f5418078bb6f38bd2d0"
+checksum = "e256f09d9fe7af37d9d44c56b99d9ce6259fbc38dd2046a2a547c7238a186ed8"
 dependencies = [
  "log",
  "num",
