@@ -26,7 +26,7 @@ rayon = { version = "1.11" }
 rustc-hash = { version = "2.1" }
 rustworkx-core = { version = "0.17" }
 smallvec = { version = "1.15" }
-strum = { version = "0.27", features = ["derive"] }
+strum = { version = "0.28", features = ["derive"] }
 z3 = { version = "0.19", optional = true }
 
 [features]
