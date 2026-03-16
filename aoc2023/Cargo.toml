@@ -20,7 +20,7 @@ derive_more = { version = "2", features = ["full"] }
 itertools = { version = "0.14" }
 num = { version = "0.4" }
 num-integer = { version = "0.1" }
-pathfinding = { version = "4.14" }
+pathfinding = { version = "4.15" }
 petgraph = { version = "0.8" }
 rayon = { version = "1.11" }
 rustc-hash = { version = "2.1" }
