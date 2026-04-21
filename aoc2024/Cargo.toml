@@ -21,7 +21,7 @@ derive_more = { version = "2", features = ["full"] }
 itertools = { version = "0.14" }
 nalgebra = { version = "0.34" }
 pathfinding = { version = "4.15" }
-rayon = { version = "1.11" }
+rayon = { version = "1.12" }
 rustc-hash = { version = "2.1" }
 smallvec = { version = "1.15" }
 strum = { version = "0.28", features = ["derive"] }
